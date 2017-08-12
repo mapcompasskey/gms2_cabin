@@ -1,0 +1,1 @@
+scr_room_stage_created();

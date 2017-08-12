@@ -1,0 +1,1 @@
+scr_room_initialize_created();
