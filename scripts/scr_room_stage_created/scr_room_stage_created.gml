@@ -132,7 +132,8 @@ instance_create_layer(0, 0, ROOM_LAYER_CONTROLLERS, obj_hud);
 //
 // Create the World controller
 //
-instance_create_layer(0, 0, ROOM_LAYER_CONTROLLERS, obj_world);
+//instance_create_layer(0, 0, ROOM_LAYER_CONTROLLERS, obj_world);
+instance_create_layer(0, 0, ROOM_LAYER_CONTROLLERS, obj_world_2);
 
 
 //

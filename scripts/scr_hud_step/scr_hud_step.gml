@@ -62,7 +62,7 @@ if (world_grid_updated)
 {
     // update the world grid text
     world_grid_text = string(world_grid_width) + " x " + string(world_grid_height);
-    world_grid_text += string("\n" + string(world_grid_player_x) + " x " + string(world_grid_player_y));
+    world_grid_text += string("\n" + string(world_player_cell_x) + " x " + string(world_player_cell_y));
     
     world_grid_updated = false;
 }

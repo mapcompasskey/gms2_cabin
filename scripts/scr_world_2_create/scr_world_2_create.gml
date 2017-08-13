@@ -4,12 +4,8 @@
 load_radius = 0;
 
 // the pixel size of the grid
-grid_pixel_width = 640;
-grid_pixel_height = 640;
-
-// find the grid's pixel offset relative to the room's center
-grid_offset_x = (room_width - grid_pixel_width) / 2;
-grid_offset_y = (room_height - grid_pixel_height) / 2;
+grid_pixel_width = room_width;
+grid_pixel_height = room_height;
 
 // get the size of the grid
 grid_width = grid_pixel_width div CHUNK_WIDTH;
@@ -27,9 +23,6 @@ player_cell_x = 0;
 player_cell_y = 0;
 prev_player_cell_x = -1;
 prev_player_cell_y = -1;
-
-player_cell_offset_x = 0;
-player_cell_offset_y = 0;
 
 // update globals
 global.WORLD = id;

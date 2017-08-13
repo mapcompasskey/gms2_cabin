@@ -39,8 +39,8 @@ health_marker_draw[2] = 0;
 // the world grid
 world_grid_width = 0;
 world_grid_height = 0;
-world_grid_player_x = 0;
-world_grid_player_y = 0;
+world_player_cell_x = 0;
+world_player_cell_y = 0;
 world_grid_updated = false;
 world_grid_text = "";
 
