@@ -22,7 +22,7 @@ if (player_cell_x == prev_player_cell_x && player_cell_y == prev_player_cell_y)
     exit;
 }
 
-// track changes to player's position
+// update changes to player's position
 prev_player_cell_x = player_cell_x;
 prev_player_cell_y = player_cell_y;
 
@@ -62,16 +62,12 @@ for (i = chunk_min_x; i <= chunk_max_x; i++)
         var cell_j = (j + player_cell_offset_y);
         
         // if this grid is empty
-        //if (ds_grid_get(chunks_grid, i, j) == noone)
+        //if (ds_grid_get(chunks_grid, i, j) == noone)u
         if (ds_grid_get(chunks_grid, cell_i, cell_j) == noone)
         {
             // add a chunk object
-            //inst_x = (i * CHUNK_WIDTH) + grid_offset_x;
-            //inst_y = (j * CHUNK_HEIGHT) + grid_offset_y;
-            
             inst_x = (i * CHUNK_WIDTH) + grid_offset_x;
             inst_y = (j * CHUNK_HEIGHT) + grid_offset_y;
-            
             inst = instance_create_layer(inst_x, inst_y, ROOM_LAYER_INSTANCES, obj_chunk);
             
             /*
@@ -190,62 +186,133 @@ else if (player_cell_x <= 0)
 // If the Player is Close to the Grid's Edge
 //
 
+var resize_grid = false;
+
+// get the source grid size
+var source_grid_width = ds_grid_width(chunks_grid);
+var source_grid_height = ds_grid_height(chunks_grid);
+
+// set the destination grid's size
+var new_grid_width = source_grid_width;
+var new_grid_height = source_grid_height;
+
+// grid region to copy and paste
+var source_region_x1 = 0;
+var source_region_y1 = 0;
+var source_region_x2 = 0;
+var source_region_y2 = 0;
+var new_region_x = 0;
+var new_region_y = 0;
+
+// position to move everything
+var temp_offset_x = 0;
+var temp_offset_y = 0;
+var temp_offset_cell_x = 0;
+var temp_offset_cell_y = 0;
+
+// if close to the grid's right edge
 if (player_cell_x >= (grid_width - 1))
 {
-    scr_output("right edge");
-    
-    // move the player back to the center x position
-    // increase the grids by adding half the room size onto the right side
-    // track the offset x position to add onto the player's x position when determining the x chunk
-    
-    // get the source grid size
-    var source_grid_width = ds_grid_width(chunks_grid);
-    var source_grid_height = ds_grid_width(chunks_grid);
-    
-    // set the destination grid's size
-    var destination_grid_width = source_grid_width;
-    var destination_grid_height = source_grid_height;
-    
     // increase the width of the new grid
-    destination_grid_width += ceil(grid_width / 2);
+    new_grid_width += ceil(grid_width / 2);
     
+    // grid region to copy and paste
+    source_region_x2 = source_grid_width;
+    source_region_y2 = source_grid_height;
+    
+    // amount to reposition everything
+    temp_offset_x = -(grid_pixel_width / 2);
+    temp_offset_cell_x = new_grid_width - source_grid_width;
+    
+    // set resize grid state
+    resize_grid = true;
+}
+// else, if close to the grid's left edge
+else if (player_cell_x <= 0)
+{
+    // increase the width of the new grid
+    new_grid_width += ceil(grid_width / 2);
+    
+    // grid region to copy and paste
+    source_region_x2 = source_grid_width;
+    source_region_y2 = source_grid_height;
+    new_region_x = new_grid_width - source_grid_width;
+    
+    // amount to reposition everything
+    temp_offset_x = (grid_pixel_width / 2);
+    
+    // set resize grid state
+    resize_grid = true;
+}
+
+// if close to the grid's bottom edge
+if (player_cell_y >= (grid_height - 1))
+{
+    // increase the height of the new grid
+    new_grid_height += ceil(grid_height / 2);
+    
+    // grid region to copy and paste
+    source_region_x2 = source_grid_width;
+    source_region_y2 = source_grid_height;
+    
+    // amount to reposition everything
+    temp_offset_y = -(grid_pixel_height / 2);
+    temp_offset_cell_y = new_grid_height - source_grid_height;
+    
+    // set resize grid state
+    resize_grid = true;
+}
+// else, if close to the grid's top edge
+else if (player_cell_y <= 0)
+{
+    // increase the height of the new grid
+    new_grid_height += ceil(grid_height / 2);
+    
+    // grid region to copy and paste
+    source_region_x2 = source_grid_width;
+    source_region_y2 = source_grid_height;
+    new_region_y = new_grid_height - source_grid_height;
+    
+    // amount to reposition everything
+    temp_offset_y = (grid_pixel_height / 2);
+    
+    // set resize grid state
+    resize_grid = true;
+}
+
+
+//
+// If Resizing the Grid
+//
+if (resize_grid)
+{
     // create the new grids
-    var destination_grid = ds_grid_create(destination_grid_width, destination_grid_height);
-    ds_grid_clear(destination_grid, noone);
+    var new_grid = ds_grid_create(new_grid_width, new_grid_height);
+    ds_grid_clear(new_grid, noone);
     
-    var destination_grid_2 = ds_grid_create(destination_grid_width, destination_grid_height);
-    ds_grid_clear(destination_grid_2, noone);
+    var new_grid_2 = ds_grid_create(new_grid_width, new_grid_height);
+    ds_grid_clear(new_grid_2, noone);
     
     // copy the source grid into the new grid
-    var x1 = 0;
-    var y1 = 0;
-    var x2 = source_grid_width;
-    var y2 = source_grid_height;
-    var pos_x = 0;
-    var pos_y = 0;
-    
-    ds_grid_set_grid_region(destination_grid, chunks_grid, x1, y1, x2 ,y2, pos_x, pos_y);
-    ds_grid_set_grid_region(destination_grid_2, chunks_grid_2, x1, y1, x2 ,y2, pos_x, pos_y);
+    ds_grid_set_grid_region(new_grid, chunks_grid, source_region_x1, source_region_y1, source_region_x2 ,source_region_y2, new_region_x, new_region_y);
+    ds_grid_set_grid_region(new_grid_2, chunks_grid_2, source_region_x1, source_region_y1, source_region_x2 , source_region_y2, new_region_x, new_region_y);
     
     scr_output("source", chunks_grid, chunks_grid_2);
-    scr_output("destination", destination_grid, destination_grid_2);
+    scr_output("new", new_grid, new_grid_2);
     
     // destroy the source grids
     ds_grid_destroy(chunks_grid);
     ds_grid_destroy(chunks_grid_2);
     
     // replace the source grids
-    chunks_grid = destination_grid;
-    chunks_grid_2 = destination_grid_2;
-    
-    scr_output("new source", chunks_grid, chunks_grid_2);
-    scr_output("widths", source_grid_width, destination_grid_width);
+    chunks_grid = new_grid;
+    chunks_grid_2 = new_grid_2;
     
     // reposition everything
-    var temp_offset_x = (grid_pixel_width / 2);
     with (all)
     {
-        x -= temp_offset_x;
+        x = x + temp_offset_x;
+        y = y + temp_offset_y;
     }
     
     // reposition the camera
@@ -254,17 +321,28 @@ if (player_cell_x >= (grid_width - 1))
         scr_camera_update(x, y, true);
     }
     
-    player_cell_offset_x += ceil(temp_offset_x / CHUNK_WIDTH);
+    /*
+    // update the player's x cell offset
+    if (temp_offset_x < 0)
+    {
+        player_cell_offset_x += abs(ceil(temp_offset_x / CHUNK_WIDTH));
+    }
+    
+    // update the player's y cell offset
+    if (temp_offset_y < 0)
+    {
+        player_cell_offset_y += abs(ceil(temp_offset_y / CHUNK_HEIGHT));
+    }
+    */
+    
+    player_cell_offset_x += temp_offset_cell_x;
+    player_cell_offset_y += temp_offset_cell_y;
     
 }
 
-else if (player_cell_x <= 0)
-{
-    scr_output("left edge");
-}
 
-
-
-// update the HUD's world grid size
+//
+// Update the HUD
+//
 scr_update_hud_world_grid();
 

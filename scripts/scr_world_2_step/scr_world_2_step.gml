@@ -109,67 +109,7 @@ with (obj_chunk)
 
 
 //
-// If the Player is Close to the Room's Edge
+// Update the HUD's World Grid Size
 //
-
-if (player_cell_x >= (grid_width - 1))
-{
-    scr_output("right edge");
-    
-    // move the player back to the center x position
-    // increase the grids by adding half the room size onto the right side
-    // track the offset x position to add onto the player's x position when determining the x chunk
-    
-    // get the source grid size
-    var source_grid_width = ds_grid_width(chunks_grid);
-    var source_grid_height = ds_grid_width(chunks_grid);
-    
-    // set the destination grid's size
-    var destination_grid_width = source_grid_width;
-    var destination_grid_height = source_grid_height;
-    
-    // increase the width of the new grid
-    destination_grid_width += ceil(grid_width / 2);
-    
-    // create the new grids
-    var destination_grid = ds_grid_create(destination_grid_width, destination_grid_height);
-    ds_grid_clear(destination_grid, noone);
-    
-    var destination_grid_2 = ds_grid_create(destination_grid_width, destination_grid_height);
-    ds_grid_clear(destination_grid_2, noone);
-    
-    // copy the source grid into the new grid
-    var x1 = 0;
-    var y1 = 0;
-    var x2 = source_grid_width;
-    var y2 = source_grid_height;
-    var pos_x = 0;
-    var pos_y = 0;
-    
-    ds_grid_set_grid_region(destination_grid, chunks_grid, x1, y1, x2 ,y2, pos_x, pos_y);
-    ds_grid_set_grid_region(destination_grid_2, chunks_grid_2, x1, y1, x2 ,y2, pos_x, pos_y);
-    
-    scr_output("source", chunks_grid, chunks_grid_2);
-    scr_output("destination", destination_grid, destination_grid_2);
-    
-    // destroy the source grids
-    ds_grid_destroy(chunks_grid);
-    ds_grid_destroy(chunks_grid_2);
-    
-    // replace the source grids
-    chunks_grid = destination_grid;
-    chunks_grid_2 = destination_grid_2;
-    
-    scr_output("new source", chunks_grid, chunks_grid_2);
-    scr_output("widths", source_grid_width, destination_grid_width);
-}
-
-else if (player_cell_x <= 0)
-{
-    scr_output("left edge");
-}
-
-
-// update the HUD's world grid size
 scr_update_hud_world_grid();
 
