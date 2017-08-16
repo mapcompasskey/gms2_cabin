@@ -211,7 +211,7 @@ var temp_offset_cell_x = 0;
 var temp_offset_cell_y = 0;
 
 // if close to the grid's right edge
-if (player_cell_x >= (grid_width - 1))
+if ((player_cell_x + load_radius) >= (grid_width - 1))
 {
     // increase the width of the new grid
     new_grid_width += ceil(grid_width / 2);
@@ -228,7 +228,7 @@ if (player_cell_x >= (grid_width - 1))
     resize_grid = true;
 }
 // else, if close to the grid's left edge
-else if (player_cell_x <= 0)
+else if (player_cell_x <= load_radius)
 {
     // increase the width of the new grid
     new_grid_width += ceil(grid_width / 2);
@@ -246,7 +246,7 @@ else if (player_cell_x <= 0)
 }
 
 // if close to the grid's bottom edge
-if (player_cell_y >= (grid_height - 1))
+if ((player_cell_y + load_radius) >= (grid_height - 1))
 {
     // increase the height of the new grid
     new_grid_height += ceil(grid_height / 2);
@@ -263,7 +263,7 @@ if (player_cell_y >= (grid_height - 1))
     resize_grid = true;
 }
 // else, if close to the grid's top edge
-else if (player_cell_y <= 0)
+else if (player_cell_y <= load_radius)
 {
     // increase the height of the new grid
     new_grid_height += ceil(grid_height / 2);

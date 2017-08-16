@@ -1,7 +1,7 @@
 /// @descr scr_world_create()
 
 // the distance (in cells) to load and unload chunks around the player
-load_radius = 0;
+load_radius = 1;
 
 // the pixel size of the grid
 grid_pixel_width = 640;
