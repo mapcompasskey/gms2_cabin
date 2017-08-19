@@ -175,6 +175,14 @@
             }
         },
         {
+            "Key": "1c0367ac-e506-44c3-9928-cd97730e7272",
+            "Value": {
+                "id": "32f5d419-45f5-4f88-be14-41d06e1ff912",
+                "resourcePath": "sprites\\spr_cross\\spr_cross.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "1fc1b207-db1f-4d40-bd8b-b7a37e2689af",
             "Value": {
                 "id": "5f5c722e-5120-4db9-b653-b00524503a16",
@@ -495,6 +503,14 @@
             }
         },
         {
+            "Key": "589366a1-ac5f-4498-bd1e-ec42b24bbdda",
+            "Value": {
+                "id": "c5388f26-4a49-40cb-9ddd-67bf4abfc39f",
+                "resourcePath": "scripts\\scr_world_step1\\scr_world_step1.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "5ee28aa8-e014-42c4-9be5-20508290b56e",
             "Value": {
                 "id": "d9485d94-7e7a-44b6-8591-bbcb128e7c21",
@@ -540,6 +556,14 @@
                 "id": "f259adcd-aa3a-4841-9ed5-a46eb98af9e4",
                 "resourcePath": "sprites\\spr_player_walking\\spr_player_walking.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "67d5ec0b-76c3-48a0-8347-b807e4be592e",
+            "Value": {
+                "id": "c9105437-a8b3-4ea9-be03-3c089c0048e4",
+                "resourcePath": "objects\\obj_cross\\obj_cross.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -1031,6 +1055,14 @@
             }
         },
         {
+            "Key": "da2140ec-36da-4ba7-b569-2368d147584c",
+            "Value": {
+                "id": "7ade4fa8-2dd4-4a6d-96d5-3b1c0f40e88e",
+                "resourcePath": "scripts\\scr_world_create1\\scr_world_create1.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "da45f840-b19d-463d-866b-06311059d51d",
             "Value": {
                 "id": "4e61b4ca-7ec9-417a-9c4a-2e0d511992e0",
@@ -1249,6 +1281,8 @@
         "c15fd1ec-0166-4a37-b718-28a492ab17dc",
         "0ec6f241-6c86-40a8-be11-8aa81c890364",
         "113c82b9-0e51-4626-b16c-9d82f420f95e",
+        "da2140ec-36da-4ba7-b569-2368d147584c",
+        "589366a1-ac5f-4498-bd1e-ec42b24bbdda",
         "49aa75ff-4c9d-4b03-bebf-c785ebf7d2d0",
         "b2199c78-6488-4490-a8d4-b40458717201",
         "531a1043-d9f8-4aee-80da-3eaba13b70fb",

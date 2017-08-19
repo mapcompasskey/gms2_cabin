@@ -16,8 +16,8 @@ if (instance_exists(global.HUD))
         
         with (global.WORLD)
         {
-            temp_world_grid_width = ds_grid_width(chunks_grid);
-            temp_world_grid_height = ds_grid_height(chunks_grid);
+            temp_world_grid_width = ds_grid_width(chunks_grid_1);
+            temp_world_grid_height = ds_grid_height(chunks_grid_1);
             temp_world_player_cell_x = player_cell_x;
             temp_world_player_cell_y = player_cell_y;
         }

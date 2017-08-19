@@ -46,6 +46,8 @@ global.WORLD = noone;
 
 // parameters
 global.TICK = 0;
+global.PLAYER_START_X = 0;
+global.PLAYER_START_Y = 0;
 
 // game size and scaling
 global.VIEW_SCALE = 3;

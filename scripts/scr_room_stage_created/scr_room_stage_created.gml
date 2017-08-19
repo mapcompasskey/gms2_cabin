@@ -1,6 +1,11 @@
 /// @descr scr_room_stage_created()
 
 
+// set globals
+global.PLAYER_START_X = room_width / 2;
+global.PLAYER_START_Y = room_height / 2;
+
+
 //
 // Create the Camera
 //
@@ -141,8 +146,10 @@ instance_create_layer(0, 0, ROOM_LAYER_CONTROLLERS, obj_world);
 //
 if (global.PLAYER == noone)
 {
-    var player_x = room_width / 2;
-    var player_y = room_height / 2;
-    instance_create_layer(player_x, player_y, ROOM_LAYER_INSTANCES, obj_player);
+    instance_create_layer(global.PLAYER_START_X, global.PLAYER_START_Y, ROOM_LAYER_INSTANCES, obj_player);
 }
+
+
+// add cross to center of the room
+instance_create_layer(global.PLAYER_START_X, global.PLAYER_START_Y, ROOM_LAYER_INSTANCES, obj_cross);
 
