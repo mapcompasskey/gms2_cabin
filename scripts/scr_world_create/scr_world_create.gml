@@ -1,52 +1,41 @@
 /// @descr scr_world_create()
 
 // the distance (in cells) to load and unload chunks around the player
-cell_radius = 1;
+chunk_radius = 0;
 
-// get the size of the grid
-grid_width = room_width div CHUNK_WIDTH;
-grid_height = room_height div CHUNK_HEIGHT;
-//grid_width = 4;
-//grid_height = 4;
-grid_add_width = ceil(grid_width / 2);
-grid_add_height = ceil(grid_height / 2);
-scr_output(grid_add_width, grid_add_height);
+// get the size of the chunks grid
+chunks_grid_width = room_width div CHUNK_WIDTH;
+chunks_grid_height = room_height div CHUNK_HEIGHT;
+
+// the amount to extend the chunks grid
+chunks_grid_add_width = ceil(chunks_grid_width / 2);
+chunks_grid_add_height = ceil(chunks_grid_height / 2);
 
 // the pixel size of the grid
-grid_pixel_width = grid_width * CHUNK_WIDTH;
-grid_pixel_height = grid_height * CHUNK_HEIGHT;
+var chunks_grid_pixel_width = chunks_grid_width * CHUNK_WIDTH;
+var chunks_grid_pixel_height = chunks_grid_height * CHUNK_HEIGHT;
 
-// the offset of the grid inside the room (starts centered)
-grid_offset_x = (room_width / 2) - (grid_pixel_width / 2);
-grid_offset_y = (room_height / 2) - (grid_pixel_height / 2);
+// position to offset the chunks relative to (0, 0) in the room
+chunks_offset_x = 0;
+chunks_offset_y = 0;
 
-// create a grid and fill it with "noone"
-chunks_grid_1 = ds_grid_create(grid_width, grid_height);
+// start the chunks relative to the room's center
+chunks_offset_x = (room_width / 2) - (chunks_grid_pixel_width / 2);
+chunks_offset_y = (room_height / 2) - (chunks_grid_pixel_height / 2);
+
+// create the grid to store each chunk's id
+chunks_grid_1 = ds_grid_create(chunks_grid_width, chunks_grid_height);
 ds_grid_clear(chunks_grid_1, noone);
 
-// create a grid and fill it with "noone"
-chunks_grid_2 = ds_grid_create(grid_width, grid_height);
+// create the grid to store each chunk's layout index
+chunks_grid_2 = ds_grid_create(chunks_grid_width, chunks_grid_height);
 ds_grid_clear(chunks_grid_2, noone);
 
-// the players position on the world grid
+// the players position in the chunks grid
 player_cell_x = 0;
 player_cell_y = 0;
 prev_player_cell_x = -1;
 prev_player_cell_y = -1;
-
-// player's boundary
-player_reset_x = (room_width / 2);
-player_reset_y = (room_height / 2);
-
-player_min_x = player_reset_x - (grid_pixel_width / 2);
-player_min_y = player_reset_y - (grid_pixel_height / 2);
-player_max_x = player_reset_x + (grid_pixel_width / 2);
-player_max_y = player_reset_y + (grid_pixel_height / 2);
-
-//player_min_x = player_reset_x - (4 * CHUNK_WIDTH);
-//player_min_y = player_reset_y - (4 * CHUNK_HEIGHT);
-//player_max_x = player_reset_x + (4 * CHUNK_WIDTH);
-//player_max_y = player_reset_y + (4 * CHUNK_HEIGHT);
 
 // update globals
 global.WORLD = id;
