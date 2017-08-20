@@ -54,10 +54,11 @@ script_execute(movement_collision_script);
 x += mx;
 y += my;
 
-// update object depth
+// update instance depth
 depth = -(floor(y));
 
 
+/** /
 //
 // Keep Instance inside the Room
 //
@@ -80,4 +81,5 @@ else if (bbox_top > room_height)
 {
     y = abs(sprite_height);
 }
+/**/
 

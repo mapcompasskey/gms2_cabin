@@ -59,8 +59,8 @@ if (view_camera[0])
     //camera_y = round(camera_y);
     
     // bind the values within range
-    camera_x = clamp(camera_x, 0, room_width - view_wd);
-    camera_y = clamp(camera_y, 0, room_height - view_hg);
+    //camera_x = clamp(camera_x, 0, room_width - view_wd);
+    //camera_y = clamp(camera_y, 0, room_height - view_hg);
     
     // update the view position
     camera_set_view_pos(view_camera[0], camera_x, camera_y);

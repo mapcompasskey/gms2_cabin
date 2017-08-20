@@ -60,7 +60,10 @@ if (create_instances)
                 
                     // create the instance
                     inst = instance_create_layer(inst_x, inst_y, ROOM_LAYER_INSTANCES, asset_get_index(inst_object_name));
-                
+                    
+                    // update instance depth
+                    inst.depth = -(floor(inst.y));
+                    
                     // capture the instance id
                     instance_list[i] = inst;
                 }

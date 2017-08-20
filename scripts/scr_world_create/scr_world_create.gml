@@ -1,19 +1,20 @@
 /// @descr scr_world_create()
 
 // the distance (in cells) to load and unload chunks around the player
-cell_radius = 0;
+cell_radius = 1;
 
 // get the size of the grid
-//grid_width = room_width div CHUNK_WIDTH;
-//grid_height = room_height div CHUNK_HEIGHT;
-grid_width = 4;
-grid_height = 4;
+grid_width = room_width div CHUNK_WIDTH;
+grid_height = room_height div CHUNK_HEIGHT;
+//grid_width = 4;
+//grid_height = 4;
 grid_add_width = ceil(grid_width / 2);
 grid_add_height = ceil(grid_height / 2);
+scr_output(grid_add_width, grid_add_height);
 
 // the pixel size of the grid
-grid_pixel_width = CHUNK_WIDTH * grid_width;
-grid_pixel_height = CHUNK_HEIGHT * grid_height;
+grid_pixel_width = grid_width * CHUNK_WIDTH;
+grid_pixel_height = grid_height * CHUNK_HEIGHT;
 
 // the offset of the grid inside the room (starts centered)
 grid_offset_x = (room_width / 2) - (grid_pixel_width / 2);
@@ -36,10 +37,16 @@ prev_player_cell_y = -1;
 // player's boundary
 player_reset_x = (room_width / 2);
 player_reset_y = (room_height / 2);
+
 player_min_x = player_reset_x - (grid_pixel_width / 2);
 player_min_y = player_reset_y - (grid_pixel_height / 2);
 player_max_x = player_reset_x + (grid_pixel_width / 2);
 player_max_y = player_reset_y + (grid_pixel_height / 2);
+
+//player_min_x = player_reset_x - (4 * CHUNK_WIDTH);
+//player_min_y = player_reset_y - (4 * CHUNK_HEIGHT);
+//player_max_x = player_reset_x + (4 * CHUNK_WIDTH);
+//player_max_y = player_reset_y + (4 * CHUNK_HEIGHT);
 
 // update globals
 global.WORLD = id;

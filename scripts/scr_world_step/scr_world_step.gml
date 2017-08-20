@@ -68,10 +68,13 @@ for (cell_x = cell_min_x; cell_x <= cell_max_x; cell_x++)
             inst_y = (cell_y * CHUNK_HEIGHT) + grid_offset_y;
             inst = instance_create_layer(inst_x, inst_y, ROOM_LAYER_INSTANCES, obj_chunk);
             
-            // check if the chunk already existed
-            if (ds_grid_get(chunks_grid_2, cell_x, cell_y) != noone)
+            with (inst)
             {
-                with (inst)
+                world_grid_x = cell_x;
+                world_grid_y = cell_y;
+                
+                // check if the chunk already existed
+                if (ds_grid_get(temp_chunks_grid_2, cell_x, cell_y) != noone)
                 {
                     // set the specific layout list to load
                     layout_index = ds_grid_get(temp_chunks_grid_2, cell_x, cell_y);
@@ -91,11 +94,13 @@ for (cell_x = cell_min_x; cell_x <= cell_max_x; cell_x++)
 // Destroy Distant Chunks
 //
 
+scr_output("\nchunks", player_cell_x);
 // iterate over every chunk object
 with (obj_chunk)
 {
     var cell_x = (x - temp_grid_offset_x) div CHUNK_WIDTH;
     var cell_y = (y - temp_grid_offset_y) div CHUNK_HEIGHT;
+    if (cell_y == temp_player_cell_y) scr_output(cell_x);
     
     // if this chunk is too far from the player
     if (abs(temp_player_cell_x - cell_x) > temp_cell_radius || abs(temp_player_cell_y - cell_y) > temp_cell_radius)
@@ -105,12 +110,32 @@ with (obj_chunk)
         
         // store the layout index the chunk was using
         ds_grid_set(temp_chunks_grid_2, cell_x, cell_y, layout_index);
-        
+        if (cell_y == temp_player_cell_y) scr_output("remove", cell_x);
         instance_destroy();
     }
     
 }
 /**/
+
+//
+// Destroy Distant Chunks
+//
+
+// iterate over every chunk object
+with (obj_chunk)
+{
+    // if this chunk is too far from the player
+    if (abs(temp_player_cell_x - world_grid_x) > temp_cell_radius || abs(temp_player_cell_y - world_grid_y) > temp_cell_radius)
+    {
+        // clear the chunk instance from this grid position
+        ds_grid_set(temp_chunks_grid_1, world_grid_x, world_grid_y, noone);
+        
+        // store the layout index the chunk was using
+        ds_grid_set(temp_chunks_grid_2, world_grid_x, world_grid_y, layout_index);
+        
+        instance_destroy();
+    }
+}
 
 
 //
@@ -133,6 +158,10 @@ var source_region_y2 = 0;
 var new_region_x = 0;
 var new_region_y = 0;
 
+// amount to offset the cell positions
+var temp_cell_offset_x = 0;
+var temp_cell_offset_y = 0;
+
 // if close to the grid's right edge
 if ((player_cell_x + cell_radius) >= (grid_width - 1))
 {
@@ -147,7 +176,7 @@ if ((player_cell_x + cell_radius) >= (grid_width - 1))
     resize_grid = true;
 }
 
-// else, if close to the grid's right edge
+// else, if close to the grid's left edge
 else if ((player_cell_x - cell_radius) <= 0)
 {
     // increase the width of the new grid
@@ -163,6 +192,9 @@ else if ((player_cell_x - cell_radius) <= 0)
     
     // offset the grid
     grid_offset_x -= (grid_add_width * CHUNK_WIDTH);
+    
+    // offset the cell position
+    temp_cell_offset_x = grid_add_width;
 }
 
 // if close to the grid's bottom edge
@@ -194,7 +226,10 @@ else if ((player_cell_y - cell_radius) <= 0)
     resize_grid = true;
     
     // offset the grid
-    grid_offset_y -= (grid_add_height * CHUNK_WIDTH);
+    grid_offset_y -= (grid_add_height * CHUNK_HEIGHT);
+    
+    // offset the cell position
+    temp_cell_offset_y = grid_add_height;
 }
 
 
@@ -226,6 +261,16 @@ if (resize_grid)
     // update grid size
     grid_width = ds_grid_width(chunks_grid_1);
     grid_height = ds_grid_height(chunks_grid_1);
+    
+    // if the chunk's cell positions need updated
+    if (temp_cell_offset_x || temp_cell_offset_y)
+    {
+        with (obj_chunk)
+        {
+            world_grid_x += temp_cell_offset_x;
+            world_grid_y += temp_cell_offset_y;
+        }
+    }
 }
 
 
@@ -241,6 +286,7 @@ var reposition_offset_y = 0;
 if (global.PLAYER.x >= player_max_x || global.PLAYER.x <= player_min_x)
 {
     reposition_offset_x = player_reset_x - global.PLAYER.x;
+    reposition_offset_x = (reposition_offset_x div CHUNK_WIDTH) * CHUNK_WIDTH;
     reposition = true;
 }
 
@@ -248,6 +294,7 @@ if (global.PLAYER.x >= player_max_x || global.PLAYER.x <= player_min_x)
 if (global.PLAYER.y >= player_max_y || global.PLAYER.y <= player_min_y)
 {
     reposition_offset_y = player_reset_y - global.PLAYER.y;
+    reposition_offset_y = (reposition_offset_y  div CHUNK_HEIGHT) * CHUNK_HEIGHT;
     reposition = true;
 }
 
