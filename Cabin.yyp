@@ -103,14 +103,6 @@
             }
         },
         {
-            "Key": "0ec6f241-6c86-40a8-be11-8aa81c890364",
-            "Value": {
-                "id": "24bd18e0-a71a-4f3d-a1c9-1f7733719077",
-                "resourcePath": "scripts\\scr_world_2_create\\scr_world_2_create.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "0f8592fe-12ad-40f4-a215-d4d17ca0e2c3",
             "Value": {
                 "id": "bcb62cc5-9497-4d43-aa32-0a742ce66eb4",
@@ -140,14 +132,6 @@
                 "id": "0ca158dc-d3f1-4f83-b437-63560a4feca5",
                 "resourcePath": "tilesets\\ts_tiles\\ts_tiles.yy",
                 "resourceType": "GMTileSet"
-            }
-        },
-        {
-            "Key": "113c82b9-0e51-4626-b16c-9d82f420f95e",
-            "Value": {
-                "id": "13225513-a604-4490-bda7-37b8cb24a28e",
-                "resourcePath": "scripts\\scr_world_2_step\\scr_world_2_step.yy",
-                "resourceType": "GMScript"
             }
         },
         {
@@ -767,14 +751,6 @@
             }
         },
         {
-            "Key": "9d657ee7-1093-4622-a3f2-9af6bae8793c",
-            "Value": {
-                "id": "2b61bd60-7aa5-442b-b1ac-9c235ddf53ec",
-                "resourcePath": "scripts\\scr_world_create1\\scr_world_create1.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "a348b926-03b6-45b8-a8d1-1737819e8f21",
             "Value": {
                 "id": "3d4981db-a427-4be9-bdf6-1ec8147c55eb",
@@ -827,14 +803,6 @@
             "Value": {
                 "id": "1343778d-5445-4f10-a2f2-0ec69c5a8c48",
                 "resourcePath": "scripts\\scr_chunk_step\\scr_chunk_step.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
-            "Key": "b3933f06-fd4b-4671-bdc1-89fef8d98ff9",
-            "Value": {
-                "id": "e306fa1b-0ba1-4d45-9a24-4722501cdd2f",
-                "resourcePath": "scripts\\scr_world_step1\\scr_world_step1.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -1279,10 +1247,6 @@
         "df045f93-deea-4109-8acd-e5994fcd1ce5",
         "38343dee-67df-423a-9d0d-3681f9f637ef",
         "234c9f5a-79c5-4b0e-8a05-d6e1d6d15ca1",
-        "0ec6f241-6c86-40a8-be11-8aa81c890364",
-        "113c82b9-0e51-4626-b16c-9d82f420f95e",
-        "9d657ee7-1093-4622-a3f2-9af6bae8793c",
-        "b3933f06-fd4b-4671-bdc1-89fef8d98ff9",
         "49aa75ff-4c9d-4b03-bebf-c785ebf7d2d0",
         "b2199c78-6488-4490-a8d4-b40458717201",
         "531a1043-d9f8-4aee-80da-3eaba13b70fb",
