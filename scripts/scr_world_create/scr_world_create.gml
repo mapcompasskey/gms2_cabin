@@ -15,6 +15,10 @@ grid_add_height = ceil(grid_height / 2);
 grid_pixel_width = CHUNK_WIDTH * grid_width;
 grid_pixel_height = CHUNK_HEIGHT * grid_height;
 
+// the offset of the grid inside the room (starts centered)
+grid_offset_x = (room_width / 2) - (grid_pixel_width / 2);
+grid_offset_y = (room_height / 2) - (grid_pixel_height / 2);
+
 // create a grid and fill it with "noone"
 chunks_grid_1 = ds_grid_create(grid_width, grid_height);
 ds_grid_clear(chunks_grid_1, noone);
@@ -29,9 +33,13 @@ player_cell_y = 0;
 prev_player_cell_x = -1;
 prev_player_cell_y = -1;
 
-// the player's offset
-player_offset_x = global.PLAYER_START_X - (grid_pixel_width / 2);
-player_offset_y = global.PLAYER_START_Y - (grid_pixel_height / 2);
+// player's boundary
+player_reset_x = (room_width / 2);
+player_reset_y = (room_height / 2);
+player_min_x = player_reset_x - (grid_pixel_width / 2);
+player_min_y = player_reset_y - (grid_pixel_height / 2);
+player_max_x = player_reset_x + (grid_pixel_width / 2);
+player_max_y = player_reset_y + (grid_pixel_height / 2);
 
 // update globals
 global.WORLD = id;

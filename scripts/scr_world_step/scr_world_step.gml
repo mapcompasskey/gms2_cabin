@@ -13,8 +13,8 @@ if ( ! instance_exists(global.PLAYER))
 }
 
 // find which cell the player is currently in
-player_cell_x = (global.PLAYER.x - player_offset_x) div CHUNK_WIDTH;
-player_cell_y = (global.PLAYER.y - player_offset_y) div CHUNK_HEIGHT;
+player_cell_x = (global.PLAYER.x - grid_offset_x) div CHUNK_WIDTH;
+player_cell_y = (global.PLAYER.y - grid_offset_y) div CHUNK_HEIGHT;
 
 // exit if the player is still in the same cell
 if (player_cell_x == prev_player_cell_x && player_cell_y == prev_player_cell_y)
@@ -30,8 +30,8 @@ prev_player_cell_y = player_cell_y;
 var temp_player_cell_x = player_cell_x;
 var temp_player_cell_y = player_cell_y;
 
-var temp_player_offset_x = player_offset_x;
-var temp_player_offset_y = player_offset_y;
+var temp_grid_offset_x = grid_offset_x;
+var temp_grid_offset_y = grid_offset_y;
 
 var temp_cell_radius = cell_radius;
 
@@ -64,8 +64,8 @@ for (cell_x = cell_min_x; cell_x <= cell_max_x; cell_x++)
         if (ds_grid_get(chunks_grid_1, cell_x, cell_y) == noone)
         {
             // add a chunk object
-            inst_x = (cell_x * CHUNK_WIDTH) + player_offset_x;
-            inst_y = (cell_y * CHUNK_HEIGHT) + player_offset_y;
+            inst_x = (cell_x * CHUNK_WIDTH) + grid_offset_x;
+            inst_y = (cell_y * CHUNK_HEIGHT) + grid_offset_y;
             inst = instance_create_layer(inst_x, inst_y, ROOM_LAYER_INSTANCES, obj_chunk);
             
             // check if the chunk already existed
@@ -86,7 +86,7 @@ for (cell_x = cell_min_x; cell_x <= cell_max_x; cell_x++)
 }
 
 
-/**/
+/** /
 //
 // Destroy Distant Chunks
 //
@@ -94,8 +94,8 @@ for (cell_x = cell_min_x; cell_x <= cell_max_x; cell_x++)
 // iterate over every chunk object
 with (obj_chunk)
 {
-    var cell_x = (x - temp_player_offset_x) div CHUNK_WIDTH;
-    var cell_y = (y - temp_player_offset_y) div CHUNK_HEIGHT;
+    var cell_x = (x - temp_grid_offset_x) div CHUNK_WIDTH;
+    var cell_y = (y - temp_grid_offset_y) div CHUNK_HEIGHT;
     
     // if this chunk is too far from the player
     if (abs(temp_player_cell_x - cell_x) > temp_cell_radius || abs(temp_player_cell_y - cell_y) > temp_cell_radius)
@@ -133,15 +133,8 @@ var source_region_y2 = 0;
 var new_region_x = 0;
 var new_region_y = 0;
 
-// position to move everything
-var temp_offset_x = 0;
-var temp_offset_y = 0;
-//var temp_offset_cell_x = 0;
-//var temp_offset_cell_y = 0;
-
 // if close to the grid's right edge
 if ((player_cell_x + cell_radius) >= (grid_width - 1))
-//if ((player_cell_x + cell_radius) >= (ds_grid_width(chunks_grid_1) - 1))
 {
     // increase the width of the new grid
     new_grid_width += grid_add_width;
@@ -150,11 +143,58 @@ if ((player_cell_x + cell_radius) >= (grid_width - 1))
     source_region_x2 = source_grid_width;
     source_region_y2 = source_grid_height;
     
-    // amount to reposition everything
-    temp_offset_x = -(global.PLAYER.x - (room_width / 2));
+    // set resize grid state
+    resize_grid = true;
+}
+
+// else, if close to the grid's right edge
+else if ((player_cell_x - cell_radius) <= 0)
+{
+    // increase the width of the new grid
+    new_grid_width += grid_add_width;
+    
+    // grid region to copy and paste
+    source_region_x2 = source_grid_width;
+    source_region_y2 = source_grid_height;
+    new_region_x = grid_add_width;
     
     // set resize grid state
     resize_grid = true;
+    
+    // offset the grid
+    grid_offset_x -= (grid_add_width * CHUNK_WIDTH);
+}
+
+// if close to the grid's bottom edge
+if ((player_cell_y + cell_radius) >= (grid_height - 1))
+{
+    // increase the height of the new grid
+    new_grid_height += grid_add_height;
+    
+    // grid region to copy and paste
+    source_region_x2 = source_grid_width;
+    source_region_y2 = source_grid_height;
+    
+    // set resize grid state
+    resize_grid = true;
+}
+
+// else, if close to the grid's top edge
+else if ((player_cell_y - cell_radius) <= 0)
+{
+    // increase the height of the new grid
+    new_grid_height += grid_add_height;
+    
+    // grid region to copy and paste
+    source_region_x2 = source_grid_width;
+    source_region_y2 = source_grid_height;
+    new_region_y = grid_add_height;
+    
+    // set resize grid state
+    resize_grid = true;
+    
+    // offset the grid
+    grid_offset_y -= (grid_add_height * CHUNK_WIDTH);
 }
 
 
@@ -183,16 +223,46 @@ if (resize_grid)
     chunks_grid_1 = new_grid_1;
     chunks_grid_2 = new_grid_2;
     
+    // update grid size
+    grid_width = ds_grid_width(chunks_grid_1);
+    grid_height = ds_grid_height(chunks_grid_1);
+}
+
+
+//
+// If the Player has reached a Boundary
+//
+
+var reposition = false;
+var reposition_offset_x = 0;
+var reposition_offset_y = 0;
+
+// if the player has reached a horizontal boundary
+if (global.PLAYER.x >= player_max_x || global.PLAYER.x <= player_min_x)
+{
+    reposition_offset_x = player_reset_x - global.PLAYER.x;
+    reposition = true;
+}
+
+// if the player has reached a vertical boundary
+if (global.PLAYER.y >= player_max_y || global.PLAYER.y <= player_min_y)
+{
+    reposition_offset_y = player_reset_y - global.PLAYER.y;
+    reposition = true;
+}
+
+if (reposition)
+{
     // reposition everything
     with (all)
     {
-        //x = x + temp_offset_x;
-        //y = y + temp_offset_y;
+        //x += reposition_offset_x;
+        //y += reposition_offset_y;
         
         if (object_get_name(object_index) != "obj_cross")
         {
-            x = x + temp_offset_x;
-            y = y + temp_offset_y;
+            x += reposition_offset_x;
+            y += reposition_offset_y;
         }
     }
     
@@ -202,15 +272,12 @@ if (resize_grid)
         scr_camera_update(x, y, true);
     }
     
-    // update the player's offset
-    player_offset_x += temp_offset_x;
-    player_offset_y += temp_offset_y;
-    
-    // update grid size
-    grid_width = ds_grid_width(chunks_grid_1);
-    grid_height = ds_grid_height(chunks_grid_1);
-    
+    // update the grid's offset
+    grid_offset_x += reposition_offset_x;
+    grid_offset_y += reposition_offset_y;
 }
+
+
 
 
 //
