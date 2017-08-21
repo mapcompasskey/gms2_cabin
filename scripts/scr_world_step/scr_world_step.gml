@@ -250,6 +250,7 @@ if (resize_grid)
 }
 
 
+/** /
 //
 // Reposition Everything
 //
@@ -299,6 +300,7 @@ if (reposition)
     chunks_offset_x += reposition_offset_x;
     chunks_offset_y += reposition_offset_y;
 }
+/**/
 
 
 //

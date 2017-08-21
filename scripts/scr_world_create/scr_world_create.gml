@@ -1,7 +1,7 @@
 /// @descr scr_world_create()
 
 // the distance (in cells) to load and unload chunks around the player
-chunk_radius = 0;
+chunk_radius = 1;
 
 // get the size of the chunks grid
 chunks_grid_width = room_width div CHUNK_WIDTH;
