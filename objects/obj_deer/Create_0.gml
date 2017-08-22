@@ -1,0 +1,1 @@
+scr_deer_create();
