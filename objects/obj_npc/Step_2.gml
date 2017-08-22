@@ -1,1 +1,0 @@
-scr_npc_end_step();
