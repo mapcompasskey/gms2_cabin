@@ -4,8 +4,8 @@
 chunk_radius = 1;
 
 // get the size of the chunks grid
-chunks_grid_width = room_width div CHUNK_WIDTH;
-chunks_grid_height = room_height div CHUNK_HEIGHT;
+chunks_grid_width = 4;//room_width div CHUNK_WIDTH;
+chunks_grid_height = 4;//room_height div CHUNK_HEIGHT;
 
 // the amount to extend the chunks grid
 chunks_grid_add_width = ceil(chunks_grid_width / 2);

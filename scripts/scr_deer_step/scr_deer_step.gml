@@ -126,7 +126,7 @@ if ( ! dying)
     }
 }
 
-
+/*
 //
 // Track Proximity to Player
 //
@@ -142,7 +142,7 @@ if (global.PLAYER != noone)
         }
     }
 }
-
+*/
 
 
 //

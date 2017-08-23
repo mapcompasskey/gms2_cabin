@@ -5,7 +5,9 @@
     "name": "37440e21-a869-4acd-a327-081f486eb344",
     "children": [
         "38343dee-67df-423a-9d0d-3681f9f637ef",
-        "234c9f5a-79c5-4b0e-8a05-d6e1d6d15ca1"
+        "234c9f5a-79c5-4b0e-8a05-d6e1d6d15ca1",
+        "3092f699-e8b9-4691-b765-0a6dc397e49f",
+        "0dd3752d-de72-4807-aedc-06932867ec3e"
     ],
     "filterType": "GMScript",
     "folderName": "World",

@@ -4,6 +4,11 @@
 //
 // Update Position
 //
+
+if (paused)
+{
+    exit;
+}
     
 /*
 // apply movement friction

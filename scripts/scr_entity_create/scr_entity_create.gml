@@ -43,7 +43,8 @@ movement_collision_script = scr_entity_movement_collision;
 
 // collision tile map
 //var collision_layer_id = layer_get_id(ROOM_LAYER_COLLISION_MAP);
-tilemap = noone;//layer_tilemap_get_id(collision_layer_id);
+//tilemap = layer_tilemap_get_id(collision_layer_id);
+tilemap = noone;
 
 // states
 dying = false;
@@ -51,6 +52,7 @@ hurting = false;
 recovering = false;
 walking = false;
 running = false;
+paused = false;
 
 // drawing
 facing_x = RIGHT;
