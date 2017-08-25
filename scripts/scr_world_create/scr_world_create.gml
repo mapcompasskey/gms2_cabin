@@ -41,6 +41,14 @@ ds_grid_clear(chunks_grid_1, noone);
 chunks_grid_2 = ds_grid_create(chunks_grid_width, chunks_grid_height);
 ds_grid_clear(chunks_grid_2, noone);
 
+// set the four center chunks
+var grid_center_x = ceil(chunks_grid_width / 2);
+var grid_center_y = ceil(chunks_grid_height / 2);
+ds_grid_set(chunks_grid_2, (grid_center_x - 1), (grid_center_y - 1), "hey");
+ds_grid_set(chunks_grid_2, grid_center_x, (grid_center_y - 1), "hey");
+ds_grid_set(chunks_grid_2, (grid_center_x - 1), grid_center_y, "hey");
+ds_grid_set(chunks_grid_2, grid_center_x, grid_center_y, "hey");
+
 // the players position in the chunks grid
 player_cell_x = 0;
 player_cell_y = 0;
