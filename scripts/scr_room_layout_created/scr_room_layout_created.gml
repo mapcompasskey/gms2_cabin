@@ -34,14 +34,17 @@ var chunk_size_object_name = "obj_chunk_size";
         var inst_list = ds_list_create();
         switch (irandom(1))
         {
+            // rm_layout_1 - Layer_02
             case 0:
-                ds_list_add(inst_list, "2E01000004000000000000000000000000002240010000000A0000006F626A5F747265655F31000000000000000000004C40000000000000000000006240");
-                ds_list_add(inst_list, "2E01000004000000000000000000000000002440010000000A0000006F626A5F747265655F32000000000000000000006240000000000000000000006440");
+                ds_list_add(inst_list, "2E01000004000000000000000000000000002240010000000A0000006F626A5F747265655F31000000000000000000004C40000000000000000000006240"); // obj_tree3
+                ds_list_add(inst_list, "2E01000004000000000000000000000000002440010000000A0000006F626A5F747265655F32000000000000000000006240000000000000000000006440"); // obj_tree2
                 break;
+                
+            // rm_layout_1 - Layer_01
             case 1:
-                ds_list_add(inst_list, "2E01000004000000000000000000000000002240010000000A0000006F626A5F747265655F31000000000000000000006640000000000000000000005E40");
-                ds_list_add(inst_list, "2E01000004000000000000000000000000002440010000000A0000006F626A5F747265655F32000000000000000000004040000000000000000000006640");
-                ds_list_add(inst_list, "2E01000004000000000000000000000000002640010000000A0000006F626A5F747265655F33000000000000000000005640000000000000000000006540");
+                ds_list_add(inst_list, "2E01000004000000000000000000000000002240010000000A0000006F626A5F747265655F31000000000000000000006640000000000000000000005E40"); // obj_tree3
+                ds_list_add(inst_list, "2E01000004000000000000000000000000002440010000000A0000006F626A5F747265655F32000000000000000000004040000000000000000000006640"); // obj_tree3
+                ds_list_add(inst_list, "2E01000004000000000000000000000000002640010000000A0000006F626A5F747265655F33000000000000000000005640000000000000000000006540"); // obj_tree1
                 break;
         }
         return inst_list;
@@ -63,6 +66,9 @@ if (1 == 1)
     var layer_list;
     var layer_size;
     var layer_list_idx;
+    
+    var name_of_room = room_get_name(room);
+    var layer_name_list = ds_list_create();
     
     // get all the layers in this room
     var layers = layer_get_all();
@@ -151,6 +157,11 @@ if (1 == 1)
                     // add the instance list to the layer list
                     layer_list[| layer_list_idx] = list1;
                     ds_list_mark_as_list(layer_list, layer_list_idx);
+                    
+                    // add the layer name to the layer name list at the same index
+                    layer_name_list[| layer_list_idx] = layer_name;
+                    
+                    // increment the layer list index
                     layer_list_idx++;
                 }
                 
@@ -191,6 +202,9 @@ if (1 == 1)
                     {
                         if (ds_list_size(list1))
                         {
+                            // output layer name
+                            show_debug_message("    // " + string(name_of_room) + " - " + string(layer_name_list[| i1]));
+                            
                             // output case declaration
                             show_debug_message("    case " + string(i1) + ":");
                             
@@ -201,7 +215,7 @@ if (1 == 1)
                                 {
                                     if (ds_exists(list2, ds_type_list))
                                     {
-                                        show_debug_message("        ds_list_add(inst_list, \"" + string(ds_list_write(list2)) + "\");");
+                                        show_debug_message("        ds_list_add(inst_list, \"" + string(ds_list_write(list2)) + "\"); // " + string(list2[| 0]));
                                     }
                                 }
                             }
@@ -226,7 +240,10 @@ if (1 == 1)
         show_debug_message("\n-----\n");
         
         // free up all the memory
+        ds_list_destroy(layer_name_list);
+        ds_list_destroy(layer_list);
         ds_list_destroy(list1);
+        ds_list_destroy(list2);
     }
 }
 
