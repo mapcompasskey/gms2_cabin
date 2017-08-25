@@ -8,7 +8,7 @@ var chunk_size_object_name = "obj_chunk_size";
 /*
     If a "layout" room is loaded, loop through each layer and build a ds_list of all the instances and their properties.
     Record the object name of the instance and its x and y positions.
-    Search for an "chunk_size" object that is used to set the boundary of the chunk and record its x/y position.
+    Search for a "chunk_size" object that is used to set the boundary of the chunk and record its x/y position.
     The x/y position will be used to offset the positions of all the instances.
     
     Place the "rm_layout_N" room first to run this script.
@@ -45,7 +45,7 @@ var chunk_size_object_name = "obj_chunk_size";
                 break;
         }
         return inst_list;
-        // remember to destroy the list after its used
+        // remember to destroy the list after it is used
 */
 if (1 == 1)
 {

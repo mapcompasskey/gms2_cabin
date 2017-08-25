@@ -52,7 +52,6 @@ hurting = false;
 recovering = false;
 walking = false;
 running = false;
-paused = false;
 
 // drawing
 facing_x = RIGHT;

@@ -154,9 +154,14 @@ else if ( ! instance_exists(global.PLAYER))
 }
 
 
-// add deer
-instance_create_layer(global.PLAYER_START_X + 10, global.PLAYER_START_Y + 10, ROOM_LAYER_INSTANCES, obj_deer);
-instance_create_layer(global.PLAYER_START_X + 20, global.PLAYER_START_Y + 20, ROOM_LAYER_INSTANCES, obj_deer);
+// add deers
+var pos_x, pos_y;
+for (var i = 0; i < 100; i++)
+{
+    pos_x = (room_width / 2) + random(200) - 100;
+    pos_y = (room_height / 2) + random(200) - 100;
+    instance_create_layer(pos_x, pos_y, ROOM_LAYER_INSTANCES, obj_deer);
+}
 
 // add cross to center of the room
 instance_create_layer(global.PLAYER_START_X, global.PLAYER_START_Y, ROOM_LAYER_INSTANCES, obj_cross);

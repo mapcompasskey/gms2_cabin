@@ -5,11 +5,6 @@
 // Update Position
 //
 
-if (paused)
-{
-    exit;
-}
-    
 /*
 // apply movement friction
 if (move_friction > 0)
