@@ -1,0 +1,1 @@
+door_name = "cabin_door";
