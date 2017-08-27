@@ -4,22 +4,24 @@
 chunk_radius = 4;
 
 // get the size of the chunks grid
-chunks_grid_width = 4;//room_width div CHUNK_WIDTH;
-chunks_grid_height = 4;//room_height div CHUNK_HEIGHT;
+//chunks_grid_width = room_width div CHUNK_WIDTH;
+//chunks_grid_height = room_height div CHUNK_HEIGHT;
+chunks_grid_width = 4;
+chunks_grid_height = 4;
 
 if (chunks_grid_width < (chunk_radius * 2))
 {
-    chunks_grid_width = (chunk_radius * 2);
+    chunks_grid_width = (chunk_radius * 2) + 1;
 }
 
 if (chunks_grid_height < (chunk_radius * 2))
 {
-    chunks_grid_height = (chunk_radius * 2);
+    chunks_grid_height = (chunk_radius * 2) + 1;
 }
 
 // the amount to extend the chunks grid
-chunks_grid_add_width = ceil(chunks_grid_width / 2);
-chunks_grid_add_height = ceil(chunks_grid_height / 2);
+chunks_grid_add_width = floor(chunks_grid_width / 2);
+chunks_grid_add_height = floor(chunks_grid_height / 2);
 
 // the pixel size of the grid
 var chunks_grid_pixel_width = chunks_grid_width * CHUNK_WIDTH;
@@ -41,30 +43,14 @@ ds_grid_clear(chunks_grid_1, noone);
 chunks_grid_2 = ds_grid_create(chunks_grid_width, chunks_grid_height);
 ds_grid_clear(chunks_grid_2, noone);
 
-// set the starting chunks
-// [empty, empty, empty]
-// [empty, cabin, empty]
-// [empty, empty, empty]
-var grid_center_x = ceil(chunks_grid_width / 2);
-var grid_center_y = ceil(chunks_grid_height / 2);
-
-ds_grid_set(chunks_grid_2, (grid_center_x - 1), (grid_center_y - 1), "empty");
-ds_grid_set(chunks_grid_2, (grid_center_x - 1), grid_center_y, "empty");
-ds_grid_set(chunks_grid_2, (grid_center_x - 1), (grid_center_y + 1), "empty");
-
-ds_grid_set(chunks_grid_2, grid_center_x, (grid_center_y - 1), "empty");
-ds_grid_set(chunks_grid_2, grid_center_x, grid_center_y, "cabin");
-ds_grid_set(chunks_grid_2, grid_center_x, (grid_center_y + 1), "empty");
-
-ds_grid_set(chunks_grid_2, (grid_center_x + 1), (grid_center_y - 1), "empty");
-ds_grid_set(chunks_grid_2, (grid_center_x + 1), grid_center_y, "empty");
-ds_grid_set(chunks_grid_2, (grid_center_x + 1), (grid_center_y + 1), "empty");
-
 // the players position in the chunks grid
 player_cell_x = 0;
 player_cell_y = 0;
 prev_player_cell_x = -1;
 prev_player_cell_y = -1;
+
+// the world needs setup
+initialize_world = true;
 
 // update globals
 global.WORLD = id;

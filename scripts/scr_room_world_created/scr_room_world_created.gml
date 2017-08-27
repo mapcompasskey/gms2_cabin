@@ -1,9 +1,4 @@
-/// @descr scr_room_stage_created()
-
-
-// set globals
-global.PLAYER_START_X = room_width / 2;
-global.PLAYER_START_Y = room_height / 2;
+/// @descr scr_room_world_created()
 
 
 //
@@ -138,24 +133,10 @@ instance_create_layer(0, 0, ROOM_LAYER_CONTROLLERS, obj_hud);
 // Create the World controller
 //
 instance_create_layer(0, 0, ROOM_LAYER_CONTROLLERS, obj_world);
-//instance_create_layer(0, 0, ROOM_LAYER_CONTROLLERS, obj_world_2);
-
-
-//
-// Create the Player
-//
-if (global.PLAYER == noone)
-{
-    instance_create_layer(global.PLAYER_START_X, global.PLAYER_START_Y, ROOM_LAYER_INSTANCES, obj_player);
-}
-else if ( ! instance_exists(global.PLAYER))
-{
-    instance_create_layer(global.PLAYER_START_X, global.PLAYER_START_Y, ROOM_LAYER_INSTANCES, obj_player);
-}
 
 
 /*
-// add deers
+// add deer
 var pos_x, pos_y;
 for (var i = 0; i < 100; i++)
 {
@@ -166,5 +147,5 @@ for (var i = 0; i < 100; i++)
 */
 
 // add cross to center of the room
-instance_create_layer(global.PLAYER_START_X, global.PLAYER_START_Y, ROOM_LAYER_INSTANCES, obj_cross);
+instance_create_layer(room_width/2, room_height/2, ROOM_LAYER_INSTANCES, obj_cross);
 

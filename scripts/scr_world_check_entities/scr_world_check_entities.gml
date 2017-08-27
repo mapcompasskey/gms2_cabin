@@ -6,7 +6,7 @@
 //
 
 // *local variables can pass between instances
-var temp_player_id = global.PLAYER.id;
+var temp_player_id = global.PLAYER;
 var temp_chunks_grid_1 = chunks_grid_1;
 var temp_chunks_grid_width = chunks_grid_width;
 var temp_chunks_grid_height = chunks_grid_height;

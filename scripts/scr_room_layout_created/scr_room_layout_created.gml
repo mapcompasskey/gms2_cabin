@@ -19,7 +19,7 @@ INSTANCE MAP:
 Door instances will contain additional properties:
     instance_map[? "image_xscale"]
     instance_map[? "image_Yscale"]
-    instance_map[? "door_name"]
+    instance_map[? "door_id"]
 
 
 CREATE AN INSTANCE:
@@ -147,7 +147,7 @@ if (array_length_1d(layers))
                     {
                         instance_map[? "image_xscale"] = inst.image_xscale;
                         instance_map[? "image_yscale"] = inst.image_yscale;
-                        instance_map[? "door_name"] = inst.door_name;
+                        instance_map[? "door_id"] = inst.door_id;
                     }
                     
                     // add the instance map to the list

@@ -1,8 +1,8 @@
 {
-    "id": "91e4f3fc-da84-4d6f-92ef-ab739e4372a2",
+    "id": "6b2f8ced-47ae-4e64-8a12-8d534a1d3d9f",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "scr_room_stage_created",
+    "name": "scr_world_update_chunks",
     "IsCompatibility": false,
     "IsDnD": false
 }

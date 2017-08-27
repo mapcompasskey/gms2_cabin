@@ -46,8 +46,12 @@ global.WORLD = noone;
 
 // parameters
 global.TICK = 0;
-global.PLAYER_START_X = 0;
-global.PLAYER_START_Y = 0;
+global.PREVIOUS_DOOR_CODE = noone;
+global.PREVIOUS_ROOM_NAME = noone;
+global.CURRENT_DOOR_CODE = "01";
+global.CURRENT_ROOM_NAME = "rm_world_1";
+global.PLAYER_WORLD_CELL_X = noone;
+global.PLAYER_WORLD_CELL_Y = noone;
 
 // game size and scaling
 global.VIEW_SCALE = 3;

@@ -21,6 +21,7 @@ current_health = 10;
 
 // states
 attacking = false;
+exiting = false;
 
 // timers
 attack_cooldown_time = 0.5;

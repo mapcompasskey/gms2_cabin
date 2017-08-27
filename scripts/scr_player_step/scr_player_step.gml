@@ -41,9 +41,59 @@ if ( ! dying)
 
 
 //
+// Check Interactions with Doors
+//
+
+if ( ! exiting && ! dying)
+{
+    // check if colliding with a door
+    if (place_meeting(x, y, obj_door))
+    {
+        // get the door
+        var door = instance_place(x, y, obj_door);
+        if (door != noone)
+        {
+            with (door)
+            {
+                if (can_use_door)
+                {
+                    scr_output(door_code, exit_door_code, exit_room_name);
+                
+                    // check if the room exist
+                    var room_id = asset_get_index(exit_room_name);
+                    if (room_exists(room_id))
+                    {
+                        scr_output("room exist");
+                    
+                        // clear all inputs
+                        io_clear();
+                    
+                        // update player state
+                        other.exiting = true;
+                    
+                        // update globals
+                        global.PREVIOUS_DOOR_CODE = global.CURRENT_DOOR_CODE;
+                        global.PREVIOUS_ROOM_NAME = global.CURRENT_ROOM_NAME;
+                        global.CURRENT_DOOR_CODE = exit_door_code;
+                        global.CURRENT_ROOM_NAME = exit_room_name;
+                    
+                        // switch rooms
+                        room_goto(room_id);
+                    }
+                    
+                }
+            }
+        }
+        
+    }
+    
+}
+
+
+//
 // Check if Attacking
 //
-if ( ! dying)
+if ( ! exiting && ! dying)
 {
     if (attacking)
     {

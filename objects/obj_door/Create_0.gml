@@ -1,1 +1,1 @@
-door_name = "default";
+scr_door_create();

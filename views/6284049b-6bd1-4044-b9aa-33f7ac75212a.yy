@@ -11,7 +11,7 @@
         "ec865886-5e73-41a6-a228-6e170b59d2f5"
     ],
     "filterType": "GMScript",
-    "folderName": "Enemies",
+    "folderName": "Enemy",
     "isDefaultView": false,
     "localisedFolderName": ""
 }

@@ -1,1 +1,1 @@
-door_name = "cabin_door";
+door_id = "0001";
