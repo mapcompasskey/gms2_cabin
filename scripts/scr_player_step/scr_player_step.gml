@@ -57,14 +57,10 @@ if ( ! exiting && ! dying)
             {
                 if (can_use_door)
                 {
-                    scr_output(door_code, exit_door_code, exit_room_name);
-                
                     // check if the room exist
                     var room_id = asset_get_index(exit_room_name);
                     if (room_exists(room_id))
                     {
-                        scr_output("room exist");
-                    
                         // clear all inputs
                         io_clear();
                     

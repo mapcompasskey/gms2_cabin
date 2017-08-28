@@ -39,6 +39,10 @@ if ( ! persistent)
 // Set Globals
 //
 
+// objects
+global.CAMERA_0 = noone;
+global.CAMERA_1 = noone;
+
 // instances
 global.HUD = noone;
 global.PLAYER = noone;

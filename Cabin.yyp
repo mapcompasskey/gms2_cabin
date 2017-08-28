@@ -455,14 +455,6 @@
             }
         },
         {
-            "Key": "4a5aa7e3-36b6-4308-85d8-b286ce9c889f",
-            "Value": {
-                "id": "a85a3428-f156-4502-8855-ba0aaf1c8da2",
-                "resourcePath": "rooms\\rm_cabin\\rm_cabin.yy",
-                "resourceType": "GMRoom"
-            }
-        },
-        {
             "Key": "4c61a4ca-1132-4251-acfe-d644ac5b382f",
             "Value": {
                 "id": "8530c692-dd24-4394-bc83-2571129792bf",
@@ -887,6 +879,14 @@
             }
         },
         {
+            "Key": "a5207e5a-1503-4660-a252-5b4736bf9b41",
+            "Value": {
+                "id": "4a92b709-f9f2-4d2b-8f6e-1c80f1c5d3f3",
+                "resourcePath": "rooms\\rm_cabin\\rm_cabin.yy",
+                "resourceType": "GMRoom"
+            }
+        },
+        {
             "Key": "a60921e0-992b-4f7c-801c-1b4aa4c846ab",
             "Value": {
                 "id": "39cff210-bff9-4392-bcd1-4cf9115572e9",
@@ -1287,6 +1287,14 @@
             }
         },
         {
+            "Key": "e229ff13-ea2e-4699-8866-b0fccf948f81",
+            "Value": {
+                "id": "8fa1e8ea-7fb1-49c4-9feb-20e9789cc1d1",
+                "resourcePath": "scripts\\scr_room_cabin_created\\scr_room_cabin_created.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "e22d463c-76c9-40a8-b8b9-9b5c1282afdf",
             "Value": {
                 "id": "6fe4f7e9-ee94-48a3-81f0-156686d1d374",
@@ -1490,6 +1498,7 @@
         "28e4b675-562f-4356-ae1e-cccdc9909f9b",
         "8b226ad0-3fc7-406a-8ecf-94d56594e61f",
         "91e4f3fc-da84-4d6f-92ef-ab739e4372a2",
+        "e229ff13-ea2e-4699-8866-b0fccf948f81",
         "f59eae95-2c6e-4c19-9333-048d06cf7184",
         "38747276-736a-477f-9655-9f1f34a9dd64",
         "c70269ce-e12c-426b-9d86-b6e3f834748b",
