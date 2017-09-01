@@ -39,10 +39,6 @@ if ( ! persistent)
 // Set Globals
 //
 
-// objects
-//global.CAMERA_0 = noone;
-//global.CAMERA_1 = noone;
-
 // instances
 global.HUD = noone;
 global.PLAYER = noone;
@@ -66,9 +62,6 @@ global.PLAYER_WORLD_CELL_Y = noone;
 global.VIEW_SCALE = 3;
 global.WINDOW_WIDTH = window_get_width();
 global.WINDOW_HEIGHT = window_get_height();
-//global.VIEW_WIDTH = (global.WINDOW_WIDTH / global.VIEW_SCALE);
-//global.VIEW_HEIGHT = (global.WINDOW_HEIGHT / global.VIEW_SCALE);
-//global.BG_COLOR = make_color_rgb(255, 255, 255); // white
 global.WORLD_BG_COLOR = make_color_rgb(255, 255, 255); // white
 global.ROOM_BG_COLOR = make_color_rgb(0, 0, 0); // black
 

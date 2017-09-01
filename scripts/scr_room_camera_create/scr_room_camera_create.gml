@@ -8,6 +8,8 @@ var window_height = global.WINDOW_HEIGHT;
 // camera size
 camera_width = (window_width / global.VIEW_SCALE);
 camera_height = (window_height / global.VIEW_SCALE);
+camera_half_width = (camera_width / 2)
+camera_half_height = (camera_height / 2);
 
 // create the camera
 var border_x = (camera_width / 2);
@@ -28,16 +30,20 @@ view_set_hport(view_index, view_height);
 view_set_xport(view_index, 0);
 view_set_yport(view_index, 0);
 
+// movement variables
+camera_x = 0;
+camera_y = 0;
+previous_camera_x = 0;
+previous_camera_y = 0;
+target_x = 0;
+target_y = 0;
+snap_to_target = true;
+
 // camera boundaries
 camera_min_x = 0;
 camera_min_y = 0;
 camera_max_x = (room_width - camera_width);
 camera_max_y = (room_height - camera_height);
-
-// movement variables
-target_x = 0;
-target_y = 0;
-snap_to_target = true;
 
 // update globals
 global.ROOM_CAMERA = id;
