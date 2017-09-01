@@ -1,0 +1,1 @@
+scr_room_camera_end_step();

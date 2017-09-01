@@ -7,7 +7,7 @@
 
 var layer_id = layer_get_id(ROOM_LAYER_BACKGROUND);
 var layer_background_id = layer_background_get_id(layer_id);
-layer_background_blend(layer_background_id, global.BG_COLOR);
+layer_background_blend(layer_background_id, global.WORLD_BG_COLOR);
 
 
 //
@@ -19,7 +19,7 @@ layer_background_blend(layer_background_id, global.BG_COLOR);
     The first is the player camera that is zoomed in on and follows the player.
     The second camera displays the entire room, scaled down to proportionally fill the view.
 */
-
+/*
 view_enabled = true;
 var camera_width = (global.WINDOW_WIDTH / 2);
 var camera_height = global.WINDOW_HEIGHT;
@@ -64,7 +64,7 @@ global.CAMERA_0 = camera_0;
 // destroy the previous camera
 if (global.CAMERA_1 != noone)
 {
-    scr_output("camera_destroy", camera_destroy(global.CAMERA_1));
+    camera_destroy(global.CAMERA_1);
     global.CAMERA_1 = noone;
 }
 
@@ -100,17 +100,27 @@ view_set_visible(1, true);
 
 // update globals
 global.CAMERA_1 = camera_1;
+*/
+
+//
+// Create the Cameras
+//
+
+instance_create_layer(0, 0, ROOM_LAYER_CONTROLLERS, obj_world_camera);
+instance_create_layer(0, 0, ROOM_LAYER_CONTROLLERS, obj_world_camera_2);
 
 
 //
 // Create the HUD
 //
+
 instance_create_layer(0, 0, ROOM_LAYER_CONTROLLERS, obj_hud);
 
 
 //
 // Create the World controller
 //
+
 instance_create_layer(0, 0, ROOM_LAYER_CONTROLLERS, obj_world);
 
 
