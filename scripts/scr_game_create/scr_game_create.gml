@@ -39,15 +39,17 @@ if ( ! persistent)
 // Set Globals
 //
 
+// dynamic resources
+// *nedd to be destroyed when no longer required
+global.WORLD_CAMERA_RESOURCE = noone;
+global.WORLD_CAMERA_2_RESOURCE = noone;
+global.ROOM_CAMERA_RESOURCE = noone;
+
 // instances
 global.HUD = noone;
 global.PLAYER = noone;
 global.WORLD = noone;
-
-global.PLAYER_CAMERA_INSTANCE = noone;
-global.WORLD_CAMERA_RESOURCE = noone;
-global.WORLD_CAMERA_2_RESOURCE = noone;
-global.ROOM_CAMERA_RESOURCE = noone;
+global.PLAYER_CAMERA = noone;
 
 // parameters
 global.TICK = 0;

@@ -70,5 +70,5 @@ camera_max_x = (room_width - camera_width);
 camera_max_y = (room_height - camera_height);
 
 // update globals
-global.PLAYER_CAMERA_INSTANCE = id;
+global.PLAYER_CAMERA = id;
 global.ROOM_CAMERA_RESOURCE = camera;

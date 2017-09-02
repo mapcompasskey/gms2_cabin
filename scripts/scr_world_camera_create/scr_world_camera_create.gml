@@ -63,6 +63,6 @@ target_y = 0;
 snap_to_target = true;
 
 // update globals
-global.PLAYER_CAMERA_INSTANCE = id;
+global.PLAYER_CAMERA = id;
 global.WORLD_CAMERA_RESOURCE = camera;
 

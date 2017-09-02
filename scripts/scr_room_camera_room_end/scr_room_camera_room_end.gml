@@ -6,4 +6,4 @@
 view_set_camera(view_index, noone);
 
 // update globals
-global.PLAYER_CAMERA_INSTANCE = noone;
+global.PLAYER_CAMERA = noone;

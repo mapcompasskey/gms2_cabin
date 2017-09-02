@@ -8,9 +8,9 @@ var temp_target_x = argument0;
 var temp_target_y = argument1;
 var temp_snap_to_target = argument2;
 
-if (global.PLAYER_CAMERA_INSTANCE != noone)
+if (global.PLAYER_CAMERA != noone)
 {
-    with (global.PLAYER_CAMERA_INSTANCE)
+    with (global.PLAYER_CAMERA)
     {
         target_x = temp_target_x;
         target_y = temp_target_y;
