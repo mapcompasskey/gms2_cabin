@@ -44,10 +44,10 @@ global.HUD = noone;
 global.PLAYER = noone;
 global.WORLD = noone;
 
-global.PLAYER_CAMERA = noone;
-global.WORLD_CAMERA = noone;
-global.WORLD_CAMERA_2 = noone;
-global.ROOM_CAMERA = noone;
+global.PLAYER_CAMERA_INSTANCE = noone;
+global.WORLD_CAMERA_RESOURCE = noone;
+global.WORLD_CAMERA_2_RESOURCE = noone;
+global.ROOM_CAMERA_RESOURCE = noone;
 
 // parameters
 global.TICK = 0;

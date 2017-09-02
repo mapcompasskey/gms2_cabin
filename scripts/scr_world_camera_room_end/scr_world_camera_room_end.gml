@@ -1,8 +1,9 @@
 /// @descr scr_world_camera_room_end()
 
-// update globals
-global.WORLD_CAMERA = noone;
-global.PLAYER_CAMERA = noone;
 
-// destroy the camera
-camera_destroy(camera);
+// unassign the camera from the view
+// *the camera must be unassigned from the view or there are issues trying to reuse it in another room
+view_set_camera(view_index, noone);
+
+// update globals
+global.PLAYER_CAMERA_INSTANCE = noone;
