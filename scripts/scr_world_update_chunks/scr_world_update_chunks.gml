@@ -78,7 +78,8 @@ with (obj_chunk)
     if (abs(target_cell_x - chunks_grid_x) > temp_chunk_radius || abs(target_cell_y - chunks_grid_y) > temp_chunk_radius)
     {
         // store the layout index the chunk was using
-        ds_grid_set(temp_chunk_layouts_grid, chunks_grid_x, chunks_grid_y, layout_index);
+        // *THE CHUNK NEEDS TO DO IT SINCE THE ROOM CAN UNLOAD BEFORE ITS DESTROYED
+        //ds_grid_set(temp_chunk_layouts_grid, chunks_grid_x, chunks_grid_y, layout_index);
         
         // clear the chunk instance from this grid position
         ds_grid_set(temp_chunk_instances_grid, chunks_grid_x, chunks_grid_y, noone);
@@ -203,8 +204,8 @@ if (resize_grid)
     ds_grid_destroy(chunk_instances_grid);
     
     // replace the source grids
-    chunk_layouts_grid = new_chunk_instances_grid;
-    chunk_instances_grid = new_chunk_layouts_grid;
+    chunk_layouts_grid = new_chunk_layouts_grid;
+    chunk_instances_grid = new_chunk_instances_grid;
     
     // get the new grid size
     chunks_grid_width = ds_grid_width(chunk_layouts_grid);

@@ -28,10 +28,18 @@ if (initialize_world)
     ds_grid_set(chunk_layouts_grid, (grid_center_x + 1), grid_center_y, "empty");
     ds_grid_set(chunk_layouts_grid, (grid_center_x + 1), (grid_center_y + 1), "empty");
     
+    // update the offset so the cabin is centered in the room
+    var chunks_grid_pixel_width = (grid_center_x * CHUNK_WIDTH);
+    var chunks_grid_pixel_height = (grid_center_y * CHUNK_HEIGHT);
+    chunks_offset_x = (room_width / 2) - chunks_grid_pixel_width;
+    chunks_offset_y = (room_height / 2) - chunks_grid_pixel_height;
+    
     // target the center of the chunks grid
     scr_world_update_chunks(grid_center_x, grid_center_y);
     
+    // update state
     initialize_world = false;
+    
 }
 
 else if (reinitialize_world)
@@ -40,10 +48,16 @@ else if (reinitialize_world)
     player_cell_x = global.PLAYER_WORLD_CELL_X;
     player_cell_y = global.PLAYER_WORLD_CELL_Y;
     
+    // update the offset so the player is centered in the room
+    chunks_offset_x = (room_width / 2) - (player_cell_x * CHUNK_WIDTH);
+    chunks_offset_y = (room_height / 2) - (player_cell_y * CHUNK_HEIGHT);
+    
     // target where the player last was in this room
     scr_world_update_chunks(player_cell_x, player_cell_y);
     
+    // update state
     reinitialize_world = false;
+    
 }
 
 

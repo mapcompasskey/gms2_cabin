@@ -10,7 +10,7 @@ chunk_radius = 4;
 chunks_grid_width = 4;
 chunks_grid_height = 4;
 
-// increase the initialize if its less than the radius
+// increase the size if its less than the radius
 if (chunks_grid_width < (chunk_radius * 2))
 {
     chunks_grid_width = (chunk_radius * 2) + 1;
@@ -50,46 +50,21 @@ if (global.WORLD_CHUNK_LAYOUTS_GRID != noone)
         // get the size of the chunks grid
         chunks_grid_width = ds_grid_width(chunk_layouts_grid);
         chunks_grid_height = ds_grid_height(chunk_layouts_grid);
-                
+        
         // create the grid to store each chunk's instance id
         chunk_instances_grid = ds_grid_create(chunks_grid_width, chunks_grid_height);
         ds_grid_clear(chunk_instances_grid, noone);
         
-        // the pixel size of the grid
-        var chunks_grid_pixel_width = chunks_grid_width * CHUNK_WIDTH;
-        var chunks_grid_pixel_height = chunks_grid_height * CHUNK_HEIGHT;
-        
-        // if the grid width is less than the room's width
-        if (chunks_grid_pixel_width < room_width)
-        {
-            // center the x offset
-            chunks_offset_x = (room_width / 2) - (chunks_grid_pixel_width / 2);
-        }
-        
-        // if the grid height is less than the room's height
-        if (chunks_grid_pixel_height < room_height)
-        {
-            // center the y offset
-            chunks_offset_y = (room_height / 2) - (chunks_grid_pixel_height / 2);
-        }
-        
         // update states
         initialize_world = false;
         reinitialize_world = true;
+        
     }
 }
 
 // if the world needs to be setup
 if (initialize_world)
-{
-    // the pixel size of the grid
-    var chunks_grid_pixel_width = chunks_grid_width * CHUNK_WIDTH;
-    var chunks_grid_pixel_height = chunks_grid_height * CHUNK_HEIGHT;
-    
-    // set the offset position relative to the room's center
-    chunks_offset_x = (room_width / 2) - (chunks_grid_pixel_width / 2);
-    chunks_offset_y = (room_height / 2) - (chunks_grid_pixel_height / 2);
-    
+{ 
     // create the grid to store each chunk's layout index
     chunk_layouts_grid = ds_grid_create(chunks_grid_width, chunks_grid_height);
     ds_grid_clear(chunk_layouts_grid, noone);
@@ -97,12 +72,13 @@ if (initialize_world)
     // create the grid to store each chunk's instance id
     chunk_instances_grid = ds_grid_create(chunks_grid_width, chunks_grid_height);
     ds_grid_clear(chunk_instances_grid, noone);
+    
 }
 
 // update globals
 global.WORLD = id;
 global.WORLD_CHUNK_LAYOUTS_GRID = chunk_layouts_grid;
 global.WORLD_CHUNK_INSTANCES_GRID = chunk_instances_grid;
-    
+
 // update the HUD's world grid size
 scr_update_hud_world_grid();

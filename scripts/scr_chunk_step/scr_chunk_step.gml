@@ -88,6 +88,16 @@ if (create_instances)
     // clean up the ds_list
     ds_list_destroy(inst_list);
     
+    // store the layout index this chunk was using
+    // *TURN THIS INTO A HELPER
+    if (global.WORLD_CHUNK_LAYOUTS_GRID != noone)
+    {
+        if (ds_exists(global.WORLD_CHUNK_LAYOUTS_GRID, ds_type_grid))
+        {
+            ds_grid_set(global.WORLD_CHUNK_LAYOUTS_GRID, chunks_grid_x, chunks_grid_y, layout_index);
+        }
+    }
+    
     // change state
     create_instances = false;
 }
