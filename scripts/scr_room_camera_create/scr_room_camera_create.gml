@@ -34,7 +34,6 @@ camera_set_view_angle(camera, 0);
 camera_set_view_speed(camera, -1, -1);
 camera_set_view_target(camera, -1);
 camera_set_view_border(camera, border_x, border_y);
-scr_output("create", camera);
 
 // set the camera to a view port
 view_enabled = true;
@@ -51,8 +50,6 @@ view_set_hport(view_index, view_height);
 // set the view ports position
 view_set_xport(view_index, 0);
 view_set_yport(view_index, 0);
-
-scr_output("view camera", view_camera[view_index]);
 
 // movement variables
 camera_x = 0;

@@ -17,7 +17,7 @@ var chunk_cell_y = 0;
 var chunk_inst = noone;
 var chunk_x = 0;
 var chunk_y = 0;
-var temp_chunks_grid_2 = chunks_grid_2;
+var temp_chunk_layouts_grid = chunk_layouts_grid;
 
 // minimum distance (in cells) to test
 var chunk_cell_min_x = max(target_cell_x - chunk_radius, 0);
@@ -32,8 +32,8 @@ for (chunk_cell_x = chunk_cell_min_x; chunk_cell_x <= chunk_cell_max_x; chunk_ce
 {
     for (chunk_cell_y = chunk_cell_min_y; chunk_cell_y <= chunk_cell_max_y; chunk_cell_y++)
     {
-        // if this cell is empty
-        if (ds_grid_get(chunks_grid_1, chunk_cell_x, chunk_cell_y) == noone)
+        // if this cell doesn't contain a chunk's instance id
+        if (ds_grid_get(chunk_instances_grid, chunk_cell_x, chunk_cell_y) == noone)
         {
             // add a new chunk object
             chunk_x = (chunk_cell_x * CHUNK_WIDTH) + chunks_offset_x;
@@ -47,15 +47,15 @@ for (chunk_cell_x = chunk_cell_min_x; chunk_cell_x <= chunk_cell_max_x; chunk_ce
                 chunks_grid_y = chunk_cell_y;
                 
                 // check if the chunk already existed
-                if (ds_grid_get(temp_chunks_grid_2, chunk_cell_x, chunk_cell_y) != noone)
+                if (ds_grid_get(temp_chunk_layouts_grid, chunk_cell_x, chunk_cell_y) != noone)
                 {
                     // update the layout list to load
-                    layout_index = ds_grid_get(temp_chunks_grid_2, chunk_cell_x, chunk_cell_y);
+                    layout_index = ds_grid_get(temp_chunk_layouts_grid, chunk_cell_x, chunk_cell_y);
                 }
             }
             
-            // update the chunks grid with the new instance's id
-            ds_grid_set(chunks_grid_1, chunk_cell_x, chunk_cell_y, chunk_inst);
+            // update the chunk instances grid with the new instance's id
+            ds_grid_set(chunk_instances_grid, chunk_cell_x, chunk_cell_y, chunk_inst);
         }
         
     }
@@ -68,8 +68,8 @@ for (chunk_cell_x = chunk_cell_min_x; chunk_cell_x <= chunk_cell_max_x; chunk_ce
 
 // *local variables can pass between instances
 var temp_chunk_radius = chunk_radius;
-var temp_chunks_grid_1 = chunks_grid_1;
-var temp_chunks_grid_2 = chunks_grid_2;
+var temp_chunk_layouts_grid = chunk_layouts_grid;
+var temp_chunk_instances_grid = chunk_instances_grid;
 
 // iterate over every chunk object
 with (obj_chunk)
@@ -77,11 +77,11 @@ with (obj_chunk)
     // if this chunk is too far from the target
     if (abs(target_cell_x - chunks_grid_x) > temp_chunk_radius || abs(target_cell_y - chunks_grid_y) > temp_chunk_radius)
     {
-        // clear the chunk instance from this grid position
-        ds_grid_set(temp_chunks_grid_1, chunks_grid_x, chunks_grid_y, noone);
-        
         // store the layout index the chunk was using
-        ds_grid_set(temp_chunks_grid_2, chunks_grid_x, chunks_grid_y, layout_index);
+        ds_grid_set(temp_chunk_layouts_grid, chunks_grid_x, chunks_grid_y, layout_index);
+        
+        // clear the chunk instance from this grid position
+        ds_grid_set(temp_chunk_instances_grid, chunks_grid_x, chunks_grid_y, noone);
         
         // remove the chunk (it will remove all the objects it created)
         instance_destroy();
@@ -95,9 +95,9 @@ with (obj_chunk)
 
 var resize_grid = false;
 
-// get the source grid's size
-var source_grid_width = ds_grid_width(chunks_grid_1);
-var source_grid_height = ds_grid_height(chunks_grid_1);
+// get the current grid size
+var source_grid_width = ds_grid_width(chunk_layouts_grid);
+var source_grid_height = ds_grid_height(chunk_layouts_grid);
 
 // set the destination grid's size
 var new_grid_width = source_grid_width;
@@ -186,31 +186,31 @@ else if ((target_cell_y - chunk_radius) <= 0)
 // if the chunks grid needs resized
 if (resize_grid)
 {
-    // create a new grid
-    var new_grid_1 = ds_grid_create(new_grid_width, new_grid_height);
-    ds_grid_clear(new_grid_1, noone);
+    // create the grid to store each chunk's layout index
+    var new_chunk_layouts_grid = ds_grid_create(new_grid_width, new_grid_height);
+    ds_grid_clear(new_chunk_layouts_grid, noone);
     
-    // create a new grid
-    var new_grid_2 = ds_grid_create(new_grid_width, new_grid_height);
-    ds_grid_clear(new_grid_2, noone);
+    // create the grid to store each chunk's instance id
+    var new_chunk_instances_grid = ds_grid_create(new_grid_width, new_grid_height);
+    ds_grid_clear(new_chunk_instances_grid, noone);
     
     // copy the source grids into the new grids
-    ds_grid_set_grid_region(new_grid_1, chunks_grid_1, 0, 0, source_region_x2, source_region_y2, new_region_x, new_region_y);
-    ds_grid_set_grid_region(new_grid_2, chunks_grid_2, 0, 0, source_region_x2, source_region_y2, new_region_x, new_region_y);
+    ds_grid_set_grid_region(new_chunk_layouts_grid, chunk_layouts_grid, 0, 0, source_region_x2, source_region_y2, new_region_x, new_region_y);
+    ds_grid_set_grid_region(new_chunk_instances_grid, chunk_instances_grid, 0, 0, source_region_x2, source_region_y2, new_region_x, new_region_y);
     
     // destroy the source grids
-    ds_grid_destroy(chunks_grid_1);
-    ds_grid_destroy(chunks_grid_2);
+    ds_grid_destroy(chunk_layouts_grid);
+    ds_grid_destroy(chunk_instances_grid);
     
     // replace the source grids
-    chunks_grid_1 = new_grid_1;
-    chunks_grid_2 = new_grid_2;
+    chunk_layouts_grid = new_chunk_instances_grid;
+    chunk_instances_grid = new_chunk_layouts_grid;
     
-    // update the grid's size values
-    chunks_grid_width = ds_grid_width(chunks_grid_1);
-    chunks_grid_height = ds_grid_height(chunks_grid_1);
+    // get the new grid size
+    chunks_grid_width = ds_grid_width(chunk_layouts_grid);
+    chunks_grid_height = ds_grid_height(chunk_layouts_grid);
     
-    // if the chunk's cell positions need updated
+    // if each chunk instance's cell positions need updated
     if (temp_chunks_grid_x || temp_chunks_grid_y)
     {
         with (obj_chunk)
@@ -219,6 +219,10 @@ if (resize_grid)
             chunks_grid_y += temp_chunks_grid_y;
         }
     }
+    
+    // update globals
+    global.WORLD_CHUNK_LAYOUTS_GRID = chunk_layouts_grid;
+    global.WORLD_CHUNK_INSTANCES_GRID = chunk_instances_grid;
     
 }
 

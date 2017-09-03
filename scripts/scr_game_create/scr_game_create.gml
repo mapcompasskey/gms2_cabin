@@ -40,10 +40,13 @@ if ( ! persistent)
 //
 
 // dynamic resources
-// *nedd to be destroyed when no longer required
+// *need to be destroyed when no longer required
 global.WORLD_CAMERA_RESOURCE = noone;
 global.WORLD_CAMERA_2_RESOURCE = noone;
 global.ROOM_CAMERA_RESOURCE = noone;
+
+global.WORLD_CHUNK_INSTANCES_GRID = noone;
+global.WORLD_CHUNK_LAYOUTS_GRID = noone;
 
 // instances
 global.HUD = noone;

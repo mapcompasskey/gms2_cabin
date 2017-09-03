@@ -7,7 +7,7 @@
 
 // *local variables can pass between instances
 var temp_player_id = global.PLAYER;
-var temp_chunks_grid_1 = chunks_grid_1;
+var temp_chunk_instances_grid = chunk_instances_grid;
 var temp_chunks_grid_width = chunks_grid_width;
 var temp_chunks_grid_height = chunks_grid_height;
 var temp_chunks_offset_x = chunks_offset_x;
@@ -40,7 +40,7 @@ with (obj_entity)
             else
             {
                 // if this entity is in an empty cell
-                if (ds_grid_get(temp_chunks_grid_1, entity_cell_x, entity_cell_y) == noone)
+                if (ds_grid_get(temp_chunk_instances_grid, entity_cell_x, entity_cell_y) == noone)
                 {
                     instance_destroy();
                 }

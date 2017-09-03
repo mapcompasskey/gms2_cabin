@@ -815,6 +815,14 @@
             }
         },
         {
+            "Key": "810bbfbe-d39a-4a56-8bd8-efe6207c4aed",
+            "Value": {
+                "id": "c11a3d28-8993-421c-aab4-cd59ed7b141e",
+                "resourcePath": "scripts\\scr_world_room_end\\scr_world_room_end.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "85c5bfce-3bbb-48ad-b939-77ffa3ac7487",
             "Value": {
                 "id": "8fe527ba-cc75-4d31-ab3f-6c1ff27d0ef3",
@@ -1618,6 +1626,7 @@
         "6b2f8ced-47ae-4e64-8a12-8d534a1d3d9f",
         "3092f699-e8b9-4691-b765-0a6dc397e49f",
         "0dd3752d-de72-4807-aedc-06932867ec3e",
+        "810bbfbe-d39a-4a56-8bd8-efe6207c4aed",
         "49aa75ff-4c9d-4b03-bebf-c785ebf7d2d0",
         "b2199c78-6488-4490-a8d4-b40458717201",
         "531a1043-d9f8-4aee-80da-3eaba13b70fb",

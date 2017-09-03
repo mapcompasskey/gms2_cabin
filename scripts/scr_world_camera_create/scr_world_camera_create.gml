@@ -51,8 +51,6 @@ view_set_hport(view_index, view_height);
 view_set_xport(view_index, 0);
 view_set_yport(view_index, 0);
 
-scr_output("view camera", view_camera[view_index]);
-
 // movement variables
 camera_x = 0;
 camera_y = 0;
