@@ -1,6 +1,6 @@
 /// @descr scr_world_update_chunks(target_cell_x, target_cell_y)
-/// @param {number} target_cell_x The x position in the world chunks to target.
-/// @param {number} target_cell_y The y position in the world chunks to target.
+/// @param {number} target_cell_x The x cell position in the world chunks to target.
+/// @param {number} target_cell_y The y cell position in the world chunks to target.
 
 
 // set target cell in the world chunks grid
@@ -17,7 +17,6 @@ var chunk_cell_y = 0;
 var chunk_inst = noone;
 var chunk_x = 0;
 var chunk_y = 0;
-var temp_chunk_layouts_grid = chunk_layouts_grid;
 
 // minimum distance (in cells) to test
 var chunk_cell_min_x = max(target_cell_x - chunk_radius, 0);
@@ -45,13 +44,6 @@ for (chunk_cell_x = chunk_cell_min_x; chunk_cell_x <= chunk_cell_max_x; chunk_ce
                 // set its position within the chunks grid
                 chunks_grid_x = chunk_cell_x;
                 chunks_grid_y = chunk_cell_y;
-                
-                // check if the chunk already existed
-                if (ds_grid_get(temp_chunk_layouts_grid, chunk_cell_x, chunk_cell_y) != noone)
-                {
-                    // update the layout list to load
-                    layout_index = ds_grid_get(temp_chunk_layouts_grid, chunk_cell_x, chunk_cell_y);
-                }
             }
             
             // update the chunk instances grid with the new instance's id
@@ -77,10 +69,6 @@ with (obj_chunk)
     // if this chunk is too far from the target
     if (abs(target_cell_x - chunks_grid_x) > temp_chunk_radius || abs(target_cell_y - chunks_grid_y) > temp_chunk_radius)
     {
-        // store the layout index the chunk was using
-        // *THE CHUNK NEEDS TO DO IT SINCE THE ROOM CAN UNLOAD BEFORE ITS DESTROYED
-        //ds_grid_set(temp_chunk_layouts_grid, chunks_grid_x, chunks_grid_y, layout_index);
-        
         // clear the chunk instance from this grid position
         ds_grid_set(temp_chunk_instances_grid, chunks_grid_x, chunks_grid_y, noone);
         

@@ -2,7 +2,7 @@
 
 
 // the distance (in cells) to load and unload chunks around the player
-chunk_radius = 4;
+chunk_radius = 1;
 
 // set the initialize size of the chunks grid
 //chunks_grid_width = room_width div CHUNK_WIDTH;

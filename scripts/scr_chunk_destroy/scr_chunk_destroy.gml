@@ -1,13 +1,13 @@
 /// @descr scr_chunk_destroy()
 
-if (is_array(instance_list))
+if (is_array(instances_array))
 {
     var inst;
     
     // destroy all the instances created by this chunk
-    for (var i = 0; i < array_length_1d(instance_list); i++)
+    for (var i = 0; i < array_length_1d(instances_array); i++)
     {
-        inst = instance_list[i];
+        inst = instances_array[i];
         with (inst)
         {
             instance_destroy();

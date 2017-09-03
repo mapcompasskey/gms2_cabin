@@ -1,6 +1,11 @@
 /// @descr scr_chunk_step()
 
-if (create_instances)
+
+//
+// Create the Chunk
+//
+
+if (initialize_chunk)
 {
     var i;
     var inst_list;
@@ -11,32 +16,45 @@ if (create_instances)
     var instance_map;
     var inst;
     
+    // check if this chunk's layout already exists
+    if (global.WORLD_CHUNK_LAYOUTS_GRID != noone)
+    {
+        if (ds_exists(global.WORLD_CHUNK_LAYOUTS_GRID, ds_type_grid))
+        {
+            // get the layout index (default value is "noone")
+            layout_index = ds_grid_get(global.WORLD_CHUNK_LAYOUTS_GRID, chunks_grid_x, chunks_grid_y);
+        }
+    }
+    
     // the array to store the value returned by the "get instances" script
     // [0] = int, [1] = ds_list
-    var layout_arr = array_create(2);
+    var layout_array;
     
     // if the layout index is not set
     if (layout_index == noone)
     {
         // get a random list of instances
-        layout_arr = scr_chunk_get_instances();
-        layout_index  = layout_arr[0];
+        layout_array = scr_chunk_get_instances();
+        layout_index  = layout_array[0];
     }
     
     else
     {
         // get a specific list of instances
-        layout_arr = scr_chunk_get_instances(layout_index);
+        layout_array = scr_chunk_get_instances(layout_index);
     }
     
     // get the list of instances
-    inst_list = layout_arr[1];
+    inst_list = layout_array[1];
     inst_size = ds_list_size(inst_list);
+    
+    // clean up the array
+    layout_array = noone;
     
     if (inst_size)
     {
         // create the array and fill it with noone
-        instance_list = array_create(inst_size, noone);
+        instances_array = array_create(inst_size, noone);
         
         for (i = 0; i < inst_size; i++)
         {
@@ -73,10 +91,10 @@ if (create_instances)
                     inst.depth = -(floor(inst.y));
                     
                     // capture the instance id
-                    instance_list[i] = inst;
+                    instances_array[i] = inst;
                 }
                 
-                // clean up the ds_map
+                // destroy the ds_map
                 ds_map_destroy(instance_map);
                 
             }
@@ -85,19 +103,19 @@ if (create_instances)
     
     }
     
-    // clean up the ds_list
+    // destroy the ds_list
     ds_list_destroy(inst_list);
     
-    // store the layout index this chunk was using
-    // *TURN THIS INTO A HELPER
+    // update this chunk's layout index
     if (global.WORLD_CHUNK_LAYOUTS_GRID != noone)
     {
         if (ds_exists(global.WORLD_CHUNK_LAYOUTS_GRID, ds_type_grid))
         {
+            // set the layout index
             ds_grid_set(global.WORLD_CHUNK_LAYOUTS_GRID, chunks_grid_x, chunks_grid_y, layout_index);
         }
     }
     
-    // change state
-    create_instances = false;
+    // update state
+    initialize_chunk = false;
 }
