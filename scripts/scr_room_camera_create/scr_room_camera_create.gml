@@ -15,7 +15,7 @@ camera_half_height = (camera_height / 2);
 var border_x = (camera_width / 2);
 var border_y = (camera_height / 2);
 
-// if the camera already exist
+// if the camera does not exist
 if (global.ROOM_CAMERA_RESOURCE == noone)
 {
     // create the camera
@@ -65,6 +65,24 @@ camera_min_x = 0;
 camera_min_y = 0;
 camera_max_x = (room_width - camera_width);
 camera_max_y = (room_height - camera_height);
+
+// can camera move horizontally
+can_move_x = true;
+if (camera_max_x < 0)
+{
+    can_move_x = false;
+    camera_x = -(camera_width - room_width) / 2;
+    camera_set_view_pos(camera, camera_x, camera_y);
+}
+
+// can camera move vertically
+can_move_y = true;
+if (camera_max_y < 0)
+{
+    can_move_y = false;
+    camera_y = -(camera_height - room_height) / 2;
+    camera_set_view_pos(camera, camera_x, camera_y);
+}
 
 // update globals
 global.PLAYER_CAMERA = id;
