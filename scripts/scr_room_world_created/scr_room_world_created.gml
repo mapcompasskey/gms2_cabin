@@ -2,6 +2,17 @@
 
 
 //
+// Clear the Application Surface
+//
+
+// with multiple camera - the previous scene is visible
+surface_set_target(application_surface);
+//draw_clear(global.WORLD_BG_COLOR);
+draw_clear(c_black);
+surface_reset_target();
+
+
+//
 // Set the Background Color
 //
 
