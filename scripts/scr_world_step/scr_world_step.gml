@@ -40,6 +40,17 @@ if (initialize_world)
     // update state
     initialize_world = false;
     
+    
+    
+    /**/
+    // add a two chunk tall tower to the right edge of the world
+    var tower_x = (chunks_grid_width - 1);
+    var tower_y = floor(chunks_grid_height / 2);
+    ds_grid_set(chunk_layouts_grid, tower_x, (tower_y - 2), "tower_2");
+    ds_grid_set(chunk_layouts_grid, tower_x, (tower_y - 1), "tower_1");
+    /**/
+    
+    
 }
 
 else if (reinitialize_world)
