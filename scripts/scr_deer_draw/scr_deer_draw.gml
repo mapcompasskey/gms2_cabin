@@ -2,4 +2,4 @@
 
 event_inherited();
 
-draw_self();
+//draw_self();
