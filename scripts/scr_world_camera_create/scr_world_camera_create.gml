@@ -2,18 +2,18 @@
 
 
 // get window size
-var window_width = (global.WINDOW_WIDTH / 2);
+var window_width = round(global.WINDOW_WIDTH / 2);
 var window_height = global.WINDOW_HEIGHT;
 
 // camera size
-camera_width = (window_width / global.VIEW_SCALE);
-camera_height = (window_height / global.VIEW_SCALE);
-camera_half_width = (camera_width / 2)
-camera_half_height = (camera_height / 2);
+camera_width = round(window_width / global.VIEW_SCALE);
+camera_height = round(window_height / global.VIEW_SCALE);
+camera_half_width = round(camera_width / 2)
+camera_half_height = round(camera_height / 2);
 
 // target/view boundaries
-var border_x = (camera_width / 2);
-var border_y = (camera_height / 2);
+var border_x = round(camera_width / 2);
+var border_y = round(camera_height / 2);
 
 // if the camera already exist
 if (global.WORLD_CAMERA_RESOURCE == noone)
@@ -64,3 +64,13 @@ snap_to_target = true;
 global.PLAYER_CAMERA = id;
 global.WORLD_CAMERA_RESOURCE = camera;
 
+
+/*
+instance_depth_grid_padding = 100;
+instance_depth_grid_height = camera_height + instance_depth_grid_padding + instance_depth_grid_padding;
+instance_depth_grid = ds_grid_create(1, instance_depth_grid_height);
+for (var i = 0; i < ds_grid_height(instance_depth_grid); i++)
+{
+    instance_depth_grid[# 0, i] = ds_list_create();
+}
+*/

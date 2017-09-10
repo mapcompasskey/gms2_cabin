@@ -11,6 +11,7 @@ if ( ! persistent)
 //
 // Set Constants
 //
+
 #macro RIGHT 1
 #macro LEFT -1
 #macro UP -1
@@ -74,6 +75,7 @@ global.ROOM_BG_COLOR = make_color_rgb(0, 0, 0); // black
 //
 // Set Instance Variables
 //
+
 aspect_ratio = 1;
 instance_depth_grid = ds_grid_create(2, 1);
 instance_depth_grid_height = 1;
