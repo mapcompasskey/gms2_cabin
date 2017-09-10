@@ -1,5 +1,5 @@
 {
-    "id": "ce4d3aa3-667f-411f-bfd6-83870ded066d",
+    "id": "b64b5ea5-a8cc-4e65-b857-b10ad08bc370",
     "modelName": "GMObject",
     "mvc": "1.0",
     "name": "obj_cabin_1",
@@ -22,6 +22,6 @@
     "physicsShapePoints": null,
     "physicsStartAwake": true,
     "solid": false,
-    "spriteId": "ad9ab9c3-fcac-42d3-aed4-a8bab98adb19",
+    "spriteId": "f39d065f-8700-4bfd-9dcc-17919d62e412",
     "visible": true
 }

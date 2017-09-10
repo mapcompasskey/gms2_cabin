@@ -12,7 +12,7 @@
         "e0da608f-86f9-4417-bd25-1bb10b47849a"
     ],
     "filterType": "GMSprite",
-    "folderName": "Cabin 2",
+    "folderName": "Cabin",
     "isDefaultView": false,
     "localisedFolderName": ""
 }

@@ -1,5 +1,6 @@
 /// @descr scr_door_create()
 
+
 door_code = noone;
 exit_room_name = noone;
 exit_door_code = noone;

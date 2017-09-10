@@ -21,8 +21,7 @@ if (initialize_world)
     ds_grid_set(chunk_layouts_grid, (grid_center_x - 1), (grid_center_y + 1), "empty");
     
     ds_grid_set(chunk_layouts_grid, grid_center_x, (grid_center_y - 1), "empty");
-    //ds_grid_set(chunk_layouts_grid, grid_center_x, grid_center_y, "cabin_1");
-    ds_grid_set(chunk_layouts_grid, grid_center_x, grid_center_y, "cabin_2");
+    ds_grid_set(chunk_layouts_grid, grid_center_x, grid_center_y, "cabin_1");
     ds_grid_set(chunk_layouts_grid, grid_center_x, (grid_center_y + 1), "empty");
     
     ds_grid_set(chunk_layouts_grid, (grid_center_x + 1), (grid_center_y - 1), "empty");

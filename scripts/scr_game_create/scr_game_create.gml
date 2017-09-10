@@ -58,7 +58,6 @@ global.PLAYER_CAMERA = noone;
 global.TICK = 0;
 global.PREVIOUS_DOOR_CODE = noone;
 global.PREVIOUS_ROOM_NAME = noone;
-//global.CURRENT_DOOR_CODE = "01";
 global.CURRENT_DOOR_CODE = "world_02";
 global.CURRENT_ROOM_NAME = "rm_world_1";
 global.PLAYER_WORLD_CELL_X = noone;

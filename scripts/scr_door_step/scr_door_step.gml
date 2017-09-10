@@ -11,13 +11,6 @@ if (initialize_door)
     switch (door_id)
     {
         // rm_layout_1 - Layer_Cabin_01
-        case "0001":
-            door_code = "world_01";
-            exit_room_name = "rm_room_1";
-            exit_door_code = "rm_room_1_01";
-            break;
-            
-        // rm_layout_1 - Layer_Cabin_02
         case "0002":
             door_code = "world_02";
             exit_room_name = "rm_room_1";

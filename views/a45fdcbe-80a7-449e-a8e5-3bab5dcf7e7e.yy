@@ -12,7 +12,7 @@
         "d6ac2924-a809-4734-ba7a-ae276c8ce019"
     ],
     "filterType": "GMObject",
-    "folderName": "Cabin 2",
+    "folderName": "Cabin",
     "isDefaultView": false,
     "localisedFolderName": ""
 }
