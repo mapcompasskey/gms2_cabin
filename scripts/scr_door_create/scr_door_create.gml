@@ -6,4 +6,4 @@ exit_door_code = noone;
 
 door_id = "0000";
 initialize_door = true;
-can_use_door = true;
+can_use_door = false;

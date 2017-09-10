@@ -1,23 +1,53 @@
 /// @descr scr_door_step()
 
+
+//
+// Set the Door's Properties
+//
+
 if (initialize_door)
 {
-    // set the door's properties
+    // the "door_id" is set in the obj_door's Creation Code in the Room Editor
     switch (door_id)
     {
-        // rm_world_1 - Enter Cabin Door
+        // rm_layout_1 - Layer_Cabin_01
         case "0001":
-            door_code = "01";
-            exit_room_name = "rm_cabin";
-            exit_door_code = "01";
+            door_code = "world_01";
+            exit_room_name = "rm_room_1";
+            exit_door_code = "rm_room_1_01";
             break;
             
-        // rm_cabin - Exit Cabin Door
+        // rm_layout_1 - Layer_Cabin_02
         case "0002":
-            door_code = "01";
-            exit_room_name = "rm_world_1";
-            exit_door_code = "01";
+            door_code = "world_02";
+            exit_room_name = "rm_room_1";
+            exit_door_code = "rm_room_1_01";
             break;
+            
+        // rm_layout_1 - Layer_Tower_01
+        case "0003":
+            door_code = "world_03";
+            exit_room_name = "rm_room_2";
+            exit_door_code = "rm_room_2_01";
+            break;
+            
+        // rm_room_1
+        case "rm_room_1_01":
+            door_code = "rm_room_1_01";
+            exit_room_name = "rm_world_1";
+            exit_door_code = "world_02";
+            break;
+            
+        // rm_room_2
+        case "rm_room_2_01":
+            door_code = "rm_room_2_01";
+            exit_room_name = "rm_world_1";
+            exit_door_code = "world_03";
+            break;
+            
+        // door_id is unknown
+        default:
+            exit;
     }
     
     // if the player doesn't exist
@@ -47,5 +77,6 @@ if (initialize_door)
         }
     }
     
+    can_use_door = true;
     initialize_door = false;
 }

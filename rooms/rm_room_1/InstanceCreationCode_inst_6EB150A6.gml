@@ -1,0 +1,1 @@
+door_id = "rm_room_1_01";
