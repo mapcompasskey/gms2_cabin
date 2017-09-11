@@ -10,7 +10,6 @@
 // get the total number of instances to sort
 var count = 0;
 count += instance_number(obj_entity);
-count += instance_number(obj_door);
 count += instance_number(obj_solid);
 
 // if there are no instances to sort
@@ -39,20 +38,6 @@ with (obj_entity)
 {
     depth_grid[# 0, i] = id;
     depth_grid[# 1, i] = y;
-    i++;
-}
-
-// get all the doors
-with (obj_door)
-{
-    var pos_y = y;
-    if (image_angle == 0)
-    {
-        pos_y += sprite_height;
-    }
-    
-    depth_grid[# 0, i] = id;
-    depth_grid[# 1, i] = pos_y;
     i++;
 }
 

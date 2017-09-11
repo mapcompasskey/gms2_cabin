@@ -6,7 +6,6 @@ exit;
 // get the total number of instances to sort
 var count = 0;
 count += instance_number(obj_entity);
-count += instance_number(obj_door);
 count += instance_number(obj_solid);
 
 if (count < 1)
@@ -37,17 +36,6 @@ for (var i = 0; i < ds_grid_height(depth_grid); i++)
 
 // get all the entities
 with (obj_entity)
-{
-    var pos_y = round(y);
-    if (pos_y > y1 && pos_y < y2)
-    {
-        pos_y = pos_y - y1;
-        ds_list_add(depth_grid[# 0, pos_y], id);
-    }
-}
-
-// get all the doors
-with (obj_door)
 {
     var pos_y = round(y);
     if (pos_y > y1 && pos_y < y2)

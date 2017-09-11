@@ -1,1 +1,0 @@
-scr_door_draw();

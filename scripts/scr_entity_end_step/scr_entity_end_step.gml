@@ -54,9 +54,6 @@ script_execute(movement_collision_script);
 x += mx;
 y += my;
 
-// update instance depth
-//depth = -(floor(y));
-
 
 /** /
 //

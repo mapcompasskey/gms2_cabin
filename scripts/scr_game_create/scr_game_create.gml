@@ -32,6 +32,7 @@ if ( ! persistent)
 // room layer names
 #macro ROOM_LAYER_CONTROLLERS "Controllers"
 #macro ROOM_LAYER_INSTANCES "Instances"
+#macro ROOM_LAYER_GROUND "Ground"
 #macro ROOM_LAYER_COLLISION_MAP "CollisionMap"
 #macro ROOM_LAYER_BACKGROUND "Background"
 

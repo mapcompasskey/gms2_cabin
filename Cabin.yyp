@@ -1551,14 +1551,6 @@
             }
         },
         {
-            "Key": "ed201b9d-1a93-4fb5-9851-8c8cbd460ca0",
-            "Value": {
-                "id": "c0e381b1-40d5-4814-b1a7-91a3e61150af",
-                "resourcePath": "scripts\\scr_door_draw\\scr_door_draw.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "ed73f2fa-9642-431b-ba35-072314cffb35",
             "Value": {
                 "id": "b4dd1175-1ba7-43c2-a29c-1af2ef459b61",
@@ -1699,7 +1691,6 @@
         "836b78c7-df91-4e34-b580-8d004eff34ed",
         "0643e06e-1550-4186-8c95-49f7e9f79af1",
         "991d55f3-c69a-448d-94f7-b9e91c82599d",
-        "ed201b9d-1a93-4fb5-9851-8c8cbd460ca0",
         "28e4b675-562f-4356-ae1e-cccdc9909f9b",
         "8b226ad0-3fc7-406a-8ecf-94d56594e61f",
         "91e4f3fc-da84-4d6f-92ef-ab739e4372a2",

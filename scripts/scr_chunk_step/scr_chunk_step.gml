@@ -76,19 +76,24 @@ if (initialize_chunk)
                     inst_x = inst_x + x;
                     inst_y = inst_y + y;
                     
-                    // create the instance
-                    inst = instance_create_layer(inst_x, inst_y, ROOM_LAYER_INSTANCES, asset_get_index(inst_object_name));
-                    
                     // if the object is a door
                     if (inst_object_name == "obj_door")
                     {
+                        // create the door
+                        inst = instance_create_layer(inst_x, inst_y, ROOM_LAYER_GROUND, asset_get_index(inst_object_name));
+                        
+                        // scale and update its "door_id"
                         inst.image_xscale = instance_map[? "image_xscale"];
                         inst.image_yscale = instance_map[? "image_yscale"];
                         inst.door_id = instance_map[? "door_id"];
                     }
                     
-                    // update instance depth
-                    inst.depth = -(floor(inst.y));
+                    // else, object is an entity or solid
+                    else
+                    {
+                        // create the instance
+                        inst = instance_create_layer(inst_x, inst_y, ROOM_LAYER_INSTANCES, asset_get_index(inst_object_name));
+                    }
                     
                     // capture the instance id
                     instances_array[i] = inst;
