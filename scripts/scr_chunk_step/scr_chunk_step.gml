@@ -121,6 +121,23 @@ if (initialize_chunk)
         }
     }
     
+    /*
+    // add deer
+    var pos_x, pos_y;
+    for (var i = 0; i < 1000; i++)
+    {
+        pos_x = x + 40 + irandom(40) - 20;
+        pos_y = y + 40 + irandom(40) - 20;
+        inst = instance_create_layer(pos_x, pos_y, ROOM_LAYER_INSTANCES, obj_deer);
+    }
+    */
+    
+    // randomly add a deer
+    if (irandom(2) == 2)
+    {
+        instance_create_layer(x, y, ROOM_LAYER_INSTANCES, obj_deer);
+    }
+    
     // update state
     initialize_chunk = false;
 }

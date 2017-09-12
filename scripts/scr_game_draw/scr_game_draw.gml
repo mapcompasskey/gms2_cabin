@@ -18,20 +18,19 @@ if (count < 1)
     exit;
 }
 
-// local variable to pass into instances
-var depth_grid = instance_depth_grid;
-
 // if the grid needs resized
 if (count != instance_depth_grid_height)
 {
-    ds_grid_resize(depth_grid, 2, count);
+    ds_grid_resize(instance_depth_grid, 2, count);
     instance_depth_grid_height = count;
 }
 
 // empty the grid
-ds_grid_clear(depth_grid, noone);
+ds_grid_clear(instance_depth_grid, noone);
 
+// local variables to pass between instances
 var i = 0;
+var depth_grid = instance_depth_grid;
 
 // get all the entities
 with (obj_entity)

@@ -64,13 +64,3 @@ snap_to_target = true;
 global.PLAYER_CAMERA = id;
 global.WORLD_CAMERA_RESOURCE = camera;
 
-
-/*
-instance_depth_grid_padding = 100;
-instance_depth_grid_height = camera_height + instance_depth_grid_padding + instance_depth_grid_padding;
-instance_depth_grid = ds_grid_create(1, instance_depth_grid_height);
-for (var i = 0; i < ds_grid_height(instance_depth_grid); i++)
-{
-    instance_depth_grid[# 0, i] = ds_list_create();
-}
-*/

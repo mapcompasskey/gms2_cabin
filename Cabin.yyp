@@ -119,14 +119,6 @@
             }
         },
         {
-            "Key": "0a1dc80f-bc48-4edb-9d21-c4aa713224af",
-            "Value": {
-                "id": "2ef98b07-d908-432d-8e75-c5df67930c48",
-                "resourcePath": "scripts\\scr_world_camera_draw\\scr_world_camera_draw.yy",
-                "resourceType": "GMScript"
-            }
-        },
-        {
             "Key": "0ae1763c-d2e0-4b8a-bfaa-4d1a284d5330",
             "Value": {
                 "id": "4db7c2f0-60f0-4fef-aa66-44be20b24162",
@@ -1651,7 +1643,6 @@
         "059c76f9-4952-47b1-aecb-dca04e4cfb00",
         "63a71578-2d87-4548-b056-8f762e01d197",
         "23b60515-cc98-4f50-88a8-34cbfbf5acb7",
-        "0a1dc80f-bc48-4edb-9d21-c4aa713224af",
         "bebf72e8-35cf-4d7e-ba16-5f566d9ad383",
         "994dca18-6dc4-4905-9dac-7728d765e309",
         "1ca35e27-0e0b-481c-93aa-883b6ca36e33",
