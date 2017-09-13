@@ -76,10 +76,16 @@ if (initialize_chunk)
                     inst_x = inst_x + x;
                     inst_y = inst_y + y;
                     
+                    // skip if the "chunk size" object
+                    if (inst_object_name == "obj_chunk_size")
+                    {
+                        continue;
+                    }
+                    
                     // if the object is a door
                     if (inst_object_name == "obj_door")
                     {
-                        // create the door
+                        // add the door
                         inst = instance_create_layer(inst_x, inst_y, ROOM_LAYER_GROUND, asset_get_index(inst_object_name));
                         
                         // scale and update its "door_id"
@@ -88,10 +94,17 @@ if (initialize_chunk)
                         inst.door_id = instance_map[? "door_id"];
                     }
                     
+                    // else, if a grass object
+                    else if (inst_object_name == "obj_grass_1" || inst_object_name == "obj_grass_2" || inst_object_name == "obj_grass_3")
+                    {
+                        // add the grass
+                        inst = instance_create_layer(inst_x, inst_y, ROOM_LAYER_GROUND, asset_get_index(inst_object_name));                    
+                    }
+                    
                     // else, object is an entity or solid
                     else
                     {
-                        // create the instance
+                        // add the instance
                         inst = instance_create_layer(inst_x, inst_y, ROOM_LAYER_INSTANCES, asset_get_index(inst_object_name));
                     }
                     
