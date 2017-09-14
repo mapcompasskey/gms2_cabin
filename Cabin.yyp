@@ -359,6 +359,14 @@
             }
         },
         {
+            "Key": "361e8705-1b00-4576-8cb5-d4acdb8549e0",
+            "Value": {
+                "id": "58c23e5e-a5a2-4e24-b40b-bb5ec0226828",
+                "resourcePath": "scripts\\scr_room_layout_created_2\\scr_room_layout_created_2.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "366e0f3f-0642-40dd-8126-4587f3e5eb1f",
             "Value": {
                 "id": "00b150b6-184a-4139-8c0b-ee684269a663",
@@ -1018,7 +1026,7 @@
             "Key": "a3752ebd-ab9e-40c0-a42a-68eb30fad792",
             "Value": {
                 "id": "974014b3-3d24-4b4d-893e-4fa67d68e0fd",
-                "resourcePath": "rooms\\rm_layout_11\\rm_layout_11.yy",
+                "resourcePath": "rooms\\rm_layout_2\\rm_layout_2.yy",
                 "resourceType": "GMRoom"
             }
         },
@@ -1330,7 +1338,7 @@
             "Key": "cd8740cb-04d7-43e1-9c70-0b8e0f945c88",
             "Value": {
                 "id": "d880b828-998a-4e84-9124-f5759bd7afe1",
-                "resourcePath": "scripts\\scr_chunk_get_instances1\\scr_chunk_get_instances1.yy",
+                "resourcePath": "scripts\\scr_chunk_get_instances_2\\scr_chunk_get_instances_2.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -1765,6 +1773,7 @@
         "991d55f3-c69a-448d-94f7-b9e91c82599d",
         "28e4b675-562f-4356-ae1e-cccdc9909f9b",
         "8b226ad0-3fc7-406a-8ecf-94d56594e61f",
+        "361e8705-1b00-4576-8cb5-d4acdb8549e0",
         "91e4f3fc-da84-4d6f-92ef-ab739e4372a2",
         "e229ff13-ea2e-4699-8866-b0fccf948f81",
         "f59eae95-2c6e-4c19-9333-048d06cf7184",

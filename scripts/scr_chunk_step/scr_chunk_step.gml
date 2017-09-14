@@ -34,14 +34,16 @@ if (initialize_chunk)
     if (layout_index == noone)
     {
         // get a random list of instances
-        layout_array = scr_chunk_get_instances();
+        //layout_array = scr_chunk_get_instances();
+        layout_array = scr_chunk_get_instances_2();
         layout_index  = layout_array[0];
     }
     
     else
     {
         // get a specific list of instances
-        layout_array = scr_chunk_get_instances(layout_index);
+        //layout_array = scr_chunk_get_instances(layout_index);
+        layout_array = scr_chunk_get_instances_2(layout_index);
     }
     
     // get the list of instances
