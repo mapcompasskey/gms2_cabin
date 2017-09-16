@@ -1,22 +1,13 @@
-/// @descr scr_chunk_get_instances(index)
-/// @param {any} index List of instances to return (optional)
-/// @returns {array} array
+/// @descr scr_chunk_get_layout_instances(index)
+/// @param {any} index List of instances to return
+/// @returns {real} ds_list
 
-// choose a random list
-var idx = irandom(5);
-
-// if requesting a specific list
-if (argument_count == 1)
-{
-    idx = argument[0];
-}
 
 // create a ds_list to store each instance
 // *remember to destroy the list after it is used
 var inst_list = ds_list_create();
 
-// get instances
-switch (idx)
+switch (argument[0])
 {
     case "empty":
         ds_list_add(inst_list, "9201000003000000010000000100000078000000000000000000000000010000000B0000006F626A6563745F6E616D65010000000E0000006F626A5F6368756E6B5F73697A65010000000100000079000000000000000000000000"); // obj_chunk_size
@@ -274,6 +265,4 @@ switch (idx)
         break;
 }
 
-rtn[1] = inst_list;
-rtn[0] = idx;
-return rtn;
+return inst_list;

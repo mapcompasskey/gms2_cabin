@@ -6,7 +6,8 @@
     "children": [
         "c7884faf-f8aa-47ba-81df-98d7c1655f1f",
         "d3707e8d-d0c3-421e-b0b4-986cb882a1aa",
-        "80705699-0f1e-4d0c-a8f0-d84f29ccefe7"
+        "80705699-0f1e-4d0c-a8f0-d84f29ccefe7",
+        "3fcbb72c-2152-45d4-954e-bc4e86230ee9"
     ],
     "filterType": "GMSprite",
     "folderName": "Tile Sets",

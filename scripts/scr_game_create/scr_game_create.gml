@@ -41,6 +41,9 @@ if ( ! persistent)
 // Set Globals
 //
 
+// whether to load and output the layout room data
+global.OUTPUT_LAYOUT_DATA = falses;
+
 // dynamic resources
 // *need to be destroyed when no longer required
 global.WORLD_CAMERA_RESOURCE = noone;

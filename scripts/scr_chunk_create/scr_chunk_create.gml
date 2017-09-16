@@ -12,3 +12,7 @@ initialize_chunk = true;
 // position in the world object's chunks grid
 chunks_grid_x = noone;
 chunks_grid_y = noone;
+
+// the layer and tilemap
+tilemap_layer_id = noone;
+tilemap_id = noone;
