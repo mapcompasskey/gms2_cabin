@@ -37,7 +37,7 @@ for (chunk_cell_x = chunk_cell_min_x; chunk_cell_x <= chunk_cell_max_x; chunk_ce
             // add a new chunk object
             chunk_x = (chunk_cell_x * CHUNK_WIDTH) + chunks_offset_x;
             chunk_y = (chunk_cell_y * CHUNK_HEIGHT) + chunks_offset_y;
-            chunk_inst = instance_create_layer(chunk_x, chunk_y, ROOM_LAYER_INSTANCES, obj_chunk);
+            chunk_inst = instance_create_layer(chunk_x, chunk_y, global.CONTROLLERS_LAYER_ID, obj_chunk);
             
             with (chunk_inst)
             {

@@ -1,11 +1,12 @@
-/// @descr scr_game_draw()
+/// @descr scr_instance_sorter_create()
 
 
 //
 // Sort and Draw Instances by Depth
 //
 
-// *requires each object having a custom Draw Event to prevent draw_self() from being called
+// *requires each object having a custom Draw Event to prevent its draw_self() from being called
+// *objects are drawn when this instance is drawn - so if this instance is added beneath the Background layer, the objects its drawing will all be drawn below the Background layer
 
 // get the total number of instances to sort
 var count = 0;
@@ -60,4 +61,7 @@ for (var i = 0; i < count; i++)
         draw_self();
     }
 }
+
+
+
 

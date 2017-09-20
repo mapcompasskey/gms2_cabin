@@ -1,6 +1,8 @@
 /// @descr scr_door_step()
 
 
+scr_output("door object - depth", depth);
+
 //
 // Set the Door's Properties
 //
@@ -62,7 +64,7 @@ if (initialize_door)
                 // create the player at the door
                 var pos_x = x;
                 var pos_y = y + offset_y;
-                instance_create_layer(pos_x, pos_y, ROOM_LAYER_INSTANCES, obj_player);
+                instance_create_layer(pos_x, pos_y, global.INSTANCES_LAYER_ID, obj_player);
                 
                 // temporary disable the door
                 //can_use_door = false;

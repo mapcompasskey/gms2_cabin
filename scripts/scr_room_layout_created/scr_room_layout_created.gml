@@ -6,6 +6,7 @@ if ( ! global.OUTPUT_LAYOUT_DATA)
 {
     // goto the next Room
     room_goto_next();
+    exit;
 }
 
 
@@ -55,7 +56,7 @@ RECREATING AN INSTANCE:
 Use the object_name to find the object_index when the game loads, then use that index to create the instance.
 Game Maker assigns the object_index when the game is compiled and will change during development as new objects are added.
 
-    instance_create_layer(inst_x, inst_y, ROOM_LAYER_INSTANCES, asset_get_index(inst_object_name));
+    instance_create_layer(inst_x, inst_y, global.INSTANCES_LAYER_ID, asset_get_index(inst_object_name));
 
 
 EXAMPLE GML OUTPUT:

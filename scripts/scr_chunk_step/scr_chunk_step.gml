@@ -85,7 +85,7 @@ if (initialize_chunk)
                             if (inst_object_name == "obj_door")
                             {
                                 // add the door
-                                inst = instance_create_layer(inst_x, inst_y, ROOM_LAYER_GROUND, asset_get_index(inst_object_name));
+                                inst = instance_create_layer(inst_x, inst_y, global.GROUND_LAYER_ID, asset_get_index(inst_object_name));
                                 
                                 // scale and update its "door_id"
                                 inst.image_xscale = instance_map[? "image_xscale"];
@@ -97,7 +97,7 @@ if (initialize_chunk)
                             else
                             {
                                 // add the instance
-                                inst = instance_create_layer(inst_x, inst_y, ROOM_LAYER_INSTANCES, asset_get_index(inst_object_name));
+                                inst = instance_create_layer(inst_x, inst_y, global.INSTANCES_LAYER_ID, asset_get_index(inst_object_name));
                             }
                             
                             // capture the instance id
@@ -129,8 +129,9 @@ if (initialize_chunk)
                 var tile;
                 
                 // create the tilemap layer and the tilemap
-                var background_layer_depth = layer_get_depth(ROOM_LAYER_BACKGROUND);
-                tilemap_layer_id = layer_create((background_layer_depth - 10));
+                var layer_dpth = (global.BACKGROUND_LAYER_DEPTH - 10);
+                var layer_name = "Chunk_Tiles_" + string(id);
+                tilemap_layer_id = layer_create(layer_dpth, layer_name);
                 tilemap_id = layer_tilemap_create(tilemap_layer_id, x, y, ts_ground, 10, 10);
                 
                 for (var i = 0; i < tile_list_size; i++)
@@ -186,14 +187,14 @@ if (initialize_chunk)
     {
         pos_x = x + 40 + irandom(40) - 20;
         pos_y = y + 40 + irandom(40) - 20;
-        inst = instance_create_layer(pos_x, pos_y, ROOM_LAYER_INSTANCES, obj_deer);
+        inst = instance_create_layer(pos_x, pos_y, global.INSTANCES_LAYER_ID, obj_deer);
     }
     */
     
     // randomly add a deer
     if (irandom(2) == 2)
     {
-        instance_create_layer(x, y, ROOM_LAYER_INSTANCES, obj_deer);
+        instance_create_layer(x, y, global.INSTANCES_LAYER_ID, obj_deer);
     }
     
     // update state

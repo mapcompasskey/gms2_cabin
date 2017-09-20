@@ -1,6 +1,8 @@
 /// @descr scr_game_step()
 
 
+scr_output("game object - depth", depth);
+
 //
 // Track the Time between Steps
 //
@@ -53,14 +55,15 @@ if (keyboard_check_pressed(ord("Q")))
 {
     scr_output("----------");
     scr_output("ALL ROOM LAYERS");
-    var layer_name;
+    var layer_name, layer_dpth;
     var layers = layer_get_all();
     if (array_length_1d(layers))
     {
         for (var i = 0; i < array_length_1d(layers); i++)
         {
             layer_name = layer_get_name(layers[i]);
-            scr_output("Layer", layers[i], layer_name)
+            layer_dpth = layer_get_depth(layers[i]);
+            scr_output("Layer", layers[i], layer_name, layer_dpth)
         }
     }
     scr_output("----------");

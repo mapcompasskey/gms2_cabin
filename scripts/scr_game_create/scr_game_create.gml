@@ -33,8 +33,9 @@ if ( ! persistent)
 #macro ROOM_LAYER_CONTROLLERS "Controllers"
 #macro ROOM_LAYER_INSTANCES "Instances"
 #macro ROOM_LAYER_GROUND "Ground"
-#macro ROOM_LAYER_COLLISION_MAP "CollisionMap"
+#macro ROOM_LAYER_TILEMAP "Tilemap"
 #macro ROOM_LAYER_BACKGROUND "Background"
+//#macro ROOM_LAYER_COLLISION_MAP "CollisionMap"
 
 
 //
@@ -42,7 +43,7 @@ if ( ! persistent)
 //
 
 // whether to load and output the layout room data
-global.OUTPUT_LAYOUT_DATA = falses;
+global.OUTPUT_LAYOUT_DATA = false;
 
 // dynamic resources
 // *need to be destroyed when no longer required
@@ -75,12 +76,20 @@ global.WINDOW_HEIGHT = window_get_height();
 global.WORLD_BG_COLOR = make_color_rgb(255, 255, 255); // white
 global.ROOM_BG_COLOR = make_color_rgb(0, 0, 0); // black
 
+// room layer ids (and depth)
+// there's a performance when using the layer name instead of the layer id
+// get the ids for each layer when the room is created
+global.CONTROLLERS_LAYER_ID = noone;
+global.INSTANCES_LAYER_ID = noone;
+global.GROUND_LAYER_ID = noone;
+global.TILEMAP_LAYER_ID = noone;
+global.BACKGROUND_LAYER_ID = noone;
+global.BACKGROUND_LAYER_DEPTH = 0;
+
 
 //
 // Set Instance Variables
 //
 
 aspect_ratio = 1;
-instance_depth_grid = ds_grid_create(2, 1);
-instance_depth_grid_height = 1;
 
