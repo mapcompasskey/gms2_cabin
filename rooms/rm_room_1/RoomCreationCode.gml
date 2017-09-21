@@ -1,1 +1,0 @@
-scr_room_cabin_created();

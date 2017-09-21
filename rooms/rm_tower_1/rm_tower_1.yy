@@ -1,6 +1,6 @@
 
 {
-    "name": "rm_room_2",
+    "name": "rm_tower_1",
     "id": "9b211d98-d3cd-4191-ba06-282eb34cc5d4",
     "creationCodeFile": "RoomCreationCode.gml",
     "inheritCode": false,

@@ -15,27 +15,27 @@ if (initialize_door)
         // rm_layout_1 - Layer_Cabin_01
         case "0002":
             door_code = "world_02";
-            exit_room_name = "rm_room_1";
-            exit_door_code = "rm_room_1_01";
+            exit_room_name = "rm_cabin_1";
+            exit_door_code = "rm_cabin_1_01";
             break;
             
         // rm_layout_1 - Layer_Tower_01
         case "0003":
             door_code = "world_03";
-            exit_room_name = "rm_room_2";
-            exit_door_code = "rm_room_2_01";
+            exit_room_name = "rm_tower_1";
+            exit_door_code = "rm_tower_1_01";
             break;
             
-        // rm_room_1
-        case "rm_room_1_01":
-            door_code = "rm_room_1_01";
+        // rm_cabin_1
+        case "rm_cabin_1_01":
+            door_code = "rm_cabin_1_01";
             exit_room_name = "rm_world_1";
             exit_door_code = "world_02";
             break;
             
-        // rm_room_2
-        case "rm_room_2_01":
-            door_code = "rm_room_2_01";
+        // rm_tower_1
+        case "rm_tower_1_01":
+            door_code = "rm_tower_1_01";
             exit_room_name = "rm_world_1";
             exit_door_code = "world_03";
             break;

@@ -1,4 +1,4 @@
-/// @descr scr_room_cabin_created()
+/// @descr scr_room_inside_created()
 
 
 //

@@ -1,0 +1,1 @@
+door_id = "rm_tower_1_01";
