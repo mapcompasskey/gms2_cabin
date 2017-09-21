@@ -132,7 +132,7 @@ if (initialize_chunk)
                 var layer_dpth = (global.BACKGROUND_LAYER_DEPTH - 10);
                 var layer_name = "Chunk_Tiles_" + string(id);
                 tilemap_layer_id = layer_create(layer_dpth, layer_name);
-                tilemap_id = layer_tilemap_create(tilemap_layer_id, x, y, ts_ground, 10, 10);
+                tilemap_id = layer_tilemap_create(tilemap_layer_id, x, y, DEFAULT_TILESET, 10, 10);
                 
                 for (var i = 0; i < tile_list_size; i++)
                 {

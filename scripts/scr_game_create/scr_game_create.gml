@@ -29,6 +29,8 @@ if ( ! persistent)
 #macro CHUNK_WIDTH 80
 #macro CHUNK_HEIGHT 80
 
+#macro DEFAULT_TILESET ts_tiles
+
 // room layer names
 #macro ROOM_LAYER_CONTROLLERS "Controllers"
 #macro ROOM_LAYER_INSTANCES "Instances"
