@@ -1,8 +1,6 @@
 /// @descr scr_door_step()
 
 
-scr_output("door object - depth", depth);
-
 //
 // Set the Door's Properties
 //

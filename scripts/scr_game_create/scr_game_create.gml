@@ -88,6 +88,9 @@ global.TILEMAP_LAYER_ID = noone;
 global.BACKGROUND_LAYER_ID = noone;
 global.BACKGROUND_LAYER_DEPTH = 0;
 
+global.LAYOUT_INSTANCES_MAP = noone;
+global.LAYOUT_TILES_MAP = noone;
+
 
 //
 // Set Instance Variables

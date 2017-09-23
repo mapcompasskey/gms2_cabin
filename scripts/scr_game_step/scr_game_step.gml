@@ -1,8 +1,6 @@
 /// @descr scr_game_step()
 
 
-scr_output("game object - depth", depth);
-
 //
 // Track the Time between Steps
 //
