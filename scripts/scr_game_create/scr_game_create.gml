@@ -44,9 +44,6 @@ if ( ! persistent)
 // Set Globals
 //
 
-// whether to load and output the layout room data
-global.OUTPUT_LAYOUT_DATA = false;
-
 // dynamic resources
 // *need to be destroyed when no longer required
 global.WORLD_CAMERA_RESOURCE = noone;
@@ -88,6 +85,9 @@ global.TILEMAP_LAYER_ID = noone;
 global.BACKGROUND_LAYER_ID = noone;
 global.BACKGROUND_LAYER_DEPTH = 0;
 
+// whether to load and output the layout room data or store it in globals
+global.OUTPUT_LAYOUT_DATA = false;
+global.STORE_LAYOUT_DATA = true;
 global.LAYOUT_INSTANCES_MAP = noone;
 global.LAYOUT_TILES_MAP = noone;
 

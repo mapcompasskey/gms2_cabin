@@ -11,7 +11,10 @@
         "a6973c22-44e9-4c25-8f09-dc9837ea7f05",
         "c155e07d-9764-44a1-9098-6ca17499ff79",
         "3478abc4-fb61-4821-9d97-bf41f010a5b6",
-        "531a1043-d9f8-4aee-80da-3eaba13b70fb"
+        "531a1043-d9f8-4aee-80da-3eaba13b70fb",
+        "fb5088fe-e8bf-4755-9318-ecf8a3062563",
+        "3cae8b18-406b-46ad-937e-79826e83bc31",
+        "2a8223c6-0be9-4f25-bd4a-600bbd623be2"
     ],
     "filterType": "GMScript",
     "folderName": "Chunk",

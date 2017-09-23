@@ -6,6 +6,12 @@ Loop through each layer in the room and check whether the layer's name starts wi
 Build a list of object data and store the information into a global ds_map that can be used to rebuild the layers.
 */
 
+if ( ! global.OUTPUT_LAYOUT_DATA && ! global.STORE_LAYOUT_DATA)
+{
+    // goto the next room
+    room_goto_next();
+}
+
 // layer keywords
 var instances_layer_string = "Instances";
 var tiles_layer_string = "Tiles";
@@ -226,8 +232,87 @@ if (array_length_1d(layers))
     
 }
 
-// store the instances map id in a global
-global.LAYOUT_INSTANCES_MAP = layout_instances_map;
+
+// if storing the instances map in a global
+if (global.STORE_LAYOUT_DATA && ! global.OUTPUT_LAYOUT_DATA)
+{
+    global.LAYOUT_INSTANCES_MAP = layout_instances_map;
+}
+
+
+// if outputting the instances map to the debug window
+if (global.OUTPUT_LAYOUT_DATA && ! global.STORE_LAYOUT_DATA)
+{
+    show_debug_message("----------");
+    show_debug_message("START INSTANCES SWITCH CASE");
+    show_debug_message("----------");
+    show_debug_message("");
+    
+    var instances_map_size = ds_map_size(layout_instances_map);
+    var instances_map_key = ds_map_find_first(layout_instances_map);
+    
+    var instances_list_string = "";
+    var instances_list_default_string = noone;
+    var str_length = 0;
+    var str_steps = 1;
+    var str_step_count = 500;
+    var str_index = 1;
+    
+    for (var i1 = 0; i1 < instances_map_size; i1++)
+    {
+        // get instance data
+        instances_list_string = ds_map_find_value(layout_instances_map, instances_map_key);
+        if ( ! is_undefined(instances_list_string))
+        {
+            // if the default list, move to the bottom of the output
+            if (instances_map_key == "default")
+            {
+                instances_list_default_string = instances_list_string;
+            }
+            else
+            {
+                str_length = string_length(instances_list_string);
+                str_steps = ceil(str_length / str_step_count);
+                
+                // output case declaration
+                show_debug_message("    case \"" + instances_map_key + "\":");
+                for (var i2 = 0; i2 < str_steps; i2++)
+                {
+                    str_index = (str_step_count * i2) + 1;
+                    show_debug_message("        instances_list_string += \"" + string_copy(instances_list_string, str_index, str_step_count) + "\";");
+                }
+                show_debug_message("        break;");
+                show_debug_message("    ");
+            }
+        }
+        
+        // step to the next key
+        instances_map_key = ds_map_find_next(layout_instances_map, instances_map_key);
+    }
+    
+    // if there is a "default" string
+    if (instances_list_default_string != noone)
+    {
+        instances_list_string = instances_list_default_string;
+        str_length = string_length(instances_list_string);
+        str_steps = ceil(str_length / str_step_count);
+        
+        // output "default" case declaration
+        show_debug_message("    case \"default\":");
+        show_debug_message("    default:");        
+        for (var i2 = 0; i2 < str_steps; i2++)
+        {
+            str_index = (str_step_count * i2) + 1;
+            show_debug_message("        instances_list_string += \"" + string_copy(instances_list_string, str_index, str_step_count) + "\";");
+        }
+        show_debug_message("    ");
+    }
+    
+    show_debug_message("----------");
+    show_debug_message("END INSTANCES SWITCH CASE");
+    show_debug_message("----------");
+    show_debug_message("");
+}
 
 /** /
 // load instance data
@@ -441,42 +526,100 @@ if (array_length_1d(layers))
     
 }
 
-// store the tiles map id in a global
-global.LAYOUT_TILES_MAP = layout_tiles_map;
 
-/** /
-// load tile data
-var tile_list_string = global.LAYOUT_TILES_MAP[? "0"];
-var tile_list = ds_list_create();
-ds_list_read(tile_list, tile_list_string);
-
-scr_output("-----");
-scr_output("Reading Tiles from \"0\"");
-scr_output("Tiles Count", ds_list_size(tile_list));
-
-for (var i1 = 0; i1 < ds_list_size(tile_list); i1++)
+// if storing the tiles map in a global
+if (global.STORE_LAYOUT_DATA && ! global.OUTPUT_LAYOUT_DATA)
 {
-    var tile_map_string = tile_list[| i1];
-    
-    var tile_map = ds_map_create();
-    ds_map_read(tile_map, tile_map_string);
-    
-    var size = ds_map_size(tile_map);
-    var key = ds_map_find_first(tile_map);
-    
-    scr_output("-----");
-    for (var i2 = 0; i2 < size; i2++;)
-    {
-        scr_output(key, tile_map[? key]);
-        key = ds_map_find_next(tile_map, key);
-    }
-    
-    ds_map_destroy(tile_map);
+    global.LAYOUT_TILES_MAP = layout_tiles_map;
 }
 
-ds_list_destroy(tile_list);
-/**/
 
+// if outputting the tiles map to the debug window
+if (global.OUTPUT_LAYOUT_DATA && ! global.STORE_LAYOUT_DATA)
+{
+    show_debug_message("----------");
+    show_debug_message("START TILES SWITCH CASE");
+    show_debug_message("----------");
+    show_debug_message("");
+    
+    var tiles_map_size = ds_map_size(layout_tiles_map);
+    var tiles_map_key = ds_map_find_first(layout_tiles_map);
+    
+    var tiles_list_string = "";
+    var tiles_list_default_string = noone;
+    var str_length = 0;
+    var str_steps = 1;
+    var str_step_count = 500;
+    var str_index = 1;
+    
+    for (var i1 = 0; i1 < tiles_map_size; i1++)
+    {        
+        // get instance data
+        tiles_list_string = ds_map_find_value(layout_tiles_map, tiles_map_key);
+        if ( ! is_undefined(tiles_list_string))
+        {
+            // if the default list, move to the bottom of the output
+            if (tiles_map_key == "default")
+            {
+                tiles_list_default_string = tiles_list_string;
+            }
+            else
+            {
+                str_length = string_length(tiles_list_string);
+                str_steps = ceil(str_length / str_step_count);
+                
+                // output case declaration
+                show_debug_message("    case \"" + tiles_map_key + "\":");
+                for (var i2 = 0; i2 < str_steps; i2++)
+                {
+                    str_index = (str_step_count * i2) + 1;
+                    show_debug_message("        tiles_list_string += \"" + string_copy(tiles_list_string, str_index, str_step_count) + "\";");
+                }
+                show_debug_message("        break;");
+                show_debug_message("    ");
+            }
+        }
+        
+        // step to the next key
+        tiles_map_key = ds_map_find_next(layout_instances_map, tiles_map_key);
+    }
+    
+    // if there is a "default" string
+    if (tiles_list_default_string != noone)
+    {
+        tiles_list_string = tiles_list_default_string;
+        str_length = string_length(tiles_list_string);
+        str_steps = ceil(str_length / str_step_count);
+        
+        // output "default" case declaration
+        show_debug_message("    case \"default\":");
+        show_debug_message("    default:");        
+        for (var i2 = 0; i2 < str_steps; i2++)
+        {
+            str_index = (str_step_count * i2) + 1;
+            show_debug_message("        tiles_list_string += \"" + string_copy(tiles_list_string, str_index, str_step_count) + "\";");
+        }
+        show_debug_message("    ");
+    }
+    
+    show_debug_message("----------");
+    show_debug_message("END TILES SWITCH CASE");
+    show_debug_message("----------");
+    show_debug_message("");
+}
+
+
+
+//
+// End of File
+//
+
+if (global.OUTPUT_LAYOUT_DATA)
+{
+    // close the application
+    game_end();
+    exit;
+}
 
 // goto the next room
 room_goto_next();
