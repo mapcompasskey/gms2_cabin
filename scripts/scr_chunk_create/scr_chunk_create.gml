@@ -1,7 +1,7 @@
 /// @descr scr_chunk_create()
 
 // the index of the layout list
-layout_index = noone;
+layout_index = irandom(5); // 0 - 5
 
 // the list of instances
 instances_array = noone;

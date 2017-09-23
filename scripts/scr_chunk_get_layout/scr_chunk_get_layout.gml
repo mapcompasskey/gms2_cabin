@@ -1,29 +1,99 @@
 /// @descr scr_chunk_get_layout(index)
-/// @param {any} index List of instances to return (optional)
+/// @param {any} index List of instances and tiles to return
 /// @returns {real} ds_map
 
 
-// choose a random layout
-var idx = irandom(5); // 0 - 5
+// get the layout index
+var idx = argument[0];
 
-// if requesting a specific layout
-if (argument_count == 1)
-{
-    idx = argument[0];
-}
-
-// create a ds_map to return
+// create the return ds_map
 var rtn = ds_map_create();
 
-// get the list of instances
-var inst_list = scr_chunk_get_layout_instances(idx);
-ds_map_add_list(rtn, "instances", inst_list);
 
-// get the list of tiles
-var tile_list = scr_chunk_get_layout_tiles(idx);
-ds_map_add_list(rtn, "tiles", tile_list);
+//
+// Get the Instances List String
+//
 
-// capture the layout index
-rtn[? "idx"] = idx;
+var instances_list_string = "";
+
+if (global.STORE_LAYOUT_DATA)
+{
+    if (global.LAYOUT_INSTANCES_MAP != noone)
+    {
+        var str = ds_map_find_value(global.LAYOUT_INSTANCES_MAP, string(idx));
+        if ( ! is_undefined(str))
+        {
+            if (string_length(str) > 1)
+            {
+                instances_list_string = str;
+            }
+        }
+        
+        if (string_length(instances_list_string) < 1)
+        {
+            var str = ds_map_find_value(global.LAYOUT_INSTANCES_MAP, "default");
+            if ( ! is_undefined(str))
+            {
+                if (string_length(str) > 1)
+                {
+                    instances_list_string = str;
+                }
+            }
+        }
+        
+    }
+}
+else
+{
+    instances_list_string = scr_chunk_get_layout_instances(string(idx));
+}
+
+rtn[? "instances"] = instances_list_string;
+
+
+//
+// Get the Tiles List String
+//
+
+var tiles_list_string = "";
+
+if (global.STORE_LAYOUT_DATA)
+{
+    if (global.LAYOUT_TILES_MAP != noone)
+    {
+        var str = ds_map_find_value(global.LAYOUT_TILES_MAP, string(idx));
+        if ( ! is_undefined(str))
+        {
+            if (string_length(str) > 1)
+            {
+                tiles_list_string = str;
+            }
+        }
+        
+        if (string_length(tiles_list_string) < 1)
+        {
+            var str = ds_map_find_value(global.LAYOUT_TILES_MAP, "default");
+            if ( ! is_undefined(str))
+            {
+                if (string_length(str) > 1)
+                {
+                    tiles_list_string = str;
+                }
+            }
+        }
+        
+    }
+}
+else
+{
+    tiles_list_string = scr_chunk_get_layout_tiles(string(idx));
+}
+
+rtn[? "tiles"] = tiles_list_string;
+
+
+//
+// Return the DS Map
+//
 
 return rtn;
