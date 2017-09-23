@@ -68,7 +68,7 @@ if (initialize_chunk)
                             inst_object_name = instance_map[? "object_name"];
                             inst_x = instance_map[? "x"];
                             inst_y = instance_map[? "y"];
-                    
+                            
                             // offset the x/y position
                             inst_x = inst_x + x;
                             inst_y = inst_y + y;
@@ -103,14 +103,14 @@ if (initialize_chunk)
                             // capture the instance id
                             instances_array[i] = inst;
                         }
-                
+                        
                         // destroy the ds_map
                         ds_map_destroy(instance_map);
-                
+                        
                     }
-        
+                    
                 }
-    
+                
             }
             
         }

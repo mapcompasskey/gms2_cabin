@@ -209,6 +209,10 @@ if (array_length_1d(layers))
                     case "Instances_Trees_00":
                         layout_instances_map[? "0"] = instances_list_string;
                         break;
+                        
+                    case "Instances_Default":
+                        layout_instances_map[? "default"] = instances_list_string;
+                        break;
                 }
                 
             }
@@ -419,6 +423,10 @@ if (array_length_1d(layers))
                                 
                     case "Tiles_Trees_00":
                         layout_tiles_map[? "0"] = tiles_list_string;
+                        break;
+                        
+                    case "Tiles_Default":
+                        layout_tiles_map[? "default"] = tiles_list_string;
                         break;
                 }
                 
